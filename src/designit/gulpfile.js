@@ -24,7 +24,17 @@ gulp.task('scripts', function() {
         .pipe($.size());
 });
 
-gulp.task('html', ['styles', 'scripts'], function() {
+gulp.task('templates', function() {
+    return gulp.src('app/templates/**/*.hbs')
+        .pipe($.handlebars())
+        .pipe($.defineModule('plain'))
+        .pipe($.declare({
+            namespace: 'MyApp.templates' // change this to whatever you want
+        }))
+        .pipe(gulp.dest('.tmp/templates'));
+});
+
+gulp.task('html', ['styles', 'scripts', 'templates'], function() {
     var jsFilter = $.filter('**/*.js');
     var cssFilter = $.filter('**/*.css');
 
@@ -38,8 +48,10 @@ gulp.task('html', ['styles', 'scripts'], function() {
         .pipe(cssFilter)
         .pipe($.csso())
         .pipe(cssFilter.restore())
+        .pipe($.rev())
         .pipe($.useref.restore())
         .pipe($.useref())
+        .pipe($.revReplace())
         .pipe(gulp.dest('../../designit'))
         .pipe($.size());
 });
@@ -64,7 +76,8 @@ gulp.task('fonts', function() {
 });
 
 gulp.task('extras', function() {
-    return gulp.src(['app/*.*', '!app/*.html'], {
+    return gulp
+        .src(['app/*.*', '!app/*.html'], {
             dot: true
         })
         .pipe(gulp.dest('../../designit'));
@@ -78,7 +91,7 @@ gulp.task('clean', function() {
 
 gulp.task('build', ['html', 'images', 'fonts', 'extras']);
 
-gulp.task('default', ['clean'], function() {
+gulp.task('deploy', ['clean'], function() {
     gulp.start('build');
 });
 
@@ -120,7 +133,7 @@ gulp.task('wiredep', function() {
         .pipe(gulp.dest('app'));
 });
 
-gulp.task('watch', ['connect', 'serve'], function() {
+gulp.task('watch', ['connect', 'serve', 'templates'], function() {
     var server = $.livereload();
 
     // watch for changes
@@ -128,6 +141,7 @@ gulp.task('watch', ['connect', 'serve'], function() {
     gulp.watch([
         'app/*.html',
         '.tmp/styles/**/*.css',
+        '.tmp/templates/**/*.js',
         'app/scripts/**/*.js',
         'app/images/**/*'
     ]).on('change', function(file) {
@@ -135,6 +149,7 @@ gulp.task('watch', ['connect', 'serve'], function() {
     });
 
     gulp.watch('app/styles/**/*.scss', ['styles']);
+    gulp.watch('app/templates/**/*.hbs', ['templates']);
     gulp.watch('app/scripts/**/*.js', ['scripts']);
     gulp.watch('app/images/**/*', ['images']);
     gulp.watch('bower.json', ['wiredep']);
