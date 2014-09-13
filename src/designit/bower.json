@@ -1,9 +1,10 @@
 {
-  "name": "designit",
-  "private": true,
-  "dependencies": {
-    "jquery": "~1.11.0",
-    "handlebars": "~2.0.0"
-  },
-  "devDependencies": {}
+    "name": "designit",
+    "private": true,
+    "dependencies": {
+        "jquery": "~1.11.0",
+        "handlebars": "~2.0.0",
+        "bugsense": "~2.1.0"
+    },
+    "devDependencies": {}
 }
