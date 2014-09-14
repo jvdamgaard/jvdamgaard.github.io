@@ -2,6 +2,10 @@
 // generated on 2014-09-12 using generator-gulp-webapp 0.1.0
 
 var gulp = require('gulp');
+var critical = require('critical');
+var runSequence = require('run-sequence');
+
+var DIST = '../../designit';
 
 // load plugins
 var $ = require('gulp-load-plugins')();
@@ -15,6 +19,14 @@ gulp.task('styles', function() {
         .pipe($.autoprefixer('last 1 version'))
         .pipe(gulp.dest('.tmp/styles'))
         .pipe($.size());
+});
+
+gulp.task('copystyles', function() {
+    return gulp.src([DIST + '/styles/main.css'])
+        .pipe($.rename({
+            basename: 'critical' // site.css
+        }))
+        .pipe(gulp.dest(DIST + '/styles'));
 });
 
 gulp.task('scripts', function() {
@@ -48,11 +60,12 @@ gulp.task('html', ['styles', 'scripts', 'templates'], function() {
         .pipe(cssFilter)
         .pipe($.csso())
         .pipe(cssFilter.restore())
+        .pipe(gulp.dest(DIST))
         .pipe($.rev())
         .pipe($.useref.restore())
         .pipe($.useref())
         .pipe($.revReplace())
-        .pipe(gulp.dest('../../designit'))
+        .pipe(gulp.dest(DIST))
         .pipe($.size());
 });
 
@@ -63,7 +76,7 @@ gulp.task('images', function() {
             progressive: true,
             interlaced: true
         })))
-        .pipe(gulp.dest('../../designit/images'))
+        .pipe(gulp.dest(DIST + '/images'))
         .pipe($.size());
 });
 
@@ -71,7 +84,7 @@ gulp.task('fonts', function() {
     return $.bowerFiles()
         .pipe($.filter('**/*.{eot,svg,ttf,woff}'))
         .pipe($.flatten())
-        .pipe(gulp.dest('../../designit/fonts'))
+        .pipe(gulp.dest(DIST + '/fonts'))
         .pipe($.size());
 });
 
@@ -80,19 +93,41 @@ gulp.task('extras', function() {
         .src(['app/*.*', '!app/*.html'], {
             dot: true
         })
-        .pipe(gulp.dest('../../designit'));
+        .pipe(gulp.dest(DIST));
 });
 
 gulp.task('clean', function() {
-    return gulp.src(['.tmp', '../../designit'], {
+    return gulp.src(['.tmp', DIST], {
         read: false
     }).pipe($.clean());
 });
 
+gulp.task('critical', function() {
+    critical.generateInline({
+        base: DIST + '/',
+        src: 'index.html',
+        styleTarget: 'styles/main.css',
+        htmlTarget: 'index.html',
+        width: 320,
+        height: 480,
+        minify: true
+    }, function(err) {
+        if (err) {
+            $.util.log(err);
+        }
+    });
+});
+
 gulp.task('build', ['html', 'images', 'fonts', 'extras']);
 
-gulp.task('deploy', ['clean'], function() {
-    gulp.start('build');
+gulp.task('deploy', function(done) {
+    runSequence(
+        'clean',
+        'build',
+        // 'copystyles',
+        // 'critical',
+        done
+    );
 });
 
 gulp.task('connect', function() {
@@ -153,4 +188,20 @@ gulp.task('watch', ['connect', 'serve', 'templates'], function() {
     gulp.watch('app/scripts/**/*.js', ['scripts']);
     gulp.watch('app/images/**/*', ['images']);
     gulp.watch('bower.json', ['wiredep']);
+});
+
+gulp.task('connect-test', function() {
+    var connect = require('connect');
+    var app = connect()
+        .use(connect.static('test'));
+
+    require('http').createServer(app)
+        .listen(9001)
+        .on('listening', function() {
+            console.log('Started connect web server on http://localhost:9001');
+        });
+});
+
+gulp.task('test', ['connect-test'], function() {
+    require('opn')('http://localhost:9001');
 });
