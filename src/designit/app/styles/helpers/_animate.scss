@@ -1,6 +1,5 @@
-// Only animate if javascript is turned on
-@include non-critical() {
-    .js {
+@include critical() {
+    .js { // Only animate if javascript is turned on
         .animate {
             transition: all 0.6s ease-in-out 0s;
             transform: translateZ(0);

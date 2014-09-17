@@ -18,6 +18,7 @@ gulp.task('styles', function() {
             precision: 10
         }))
         .pipe($.autoprefixer('last 1 version'))
+        .pipe($.combineMediaQueries())
         .pipe(gulp.dest('.tmp/styles'))
         .pipe($.size());
 });

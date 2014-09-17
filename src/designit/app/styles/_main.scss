@@ -13,6 +13,7 @@
 
 // Helpers
 @import "helpers/animate";
+@import "helpers/responsive";
 
 // Objects
 
@@ -29,5 +30,6 @@
         background-color: #ccc;
         height: 50px;
         margin: ($grid-padding / 2) 0;
+        text-align: center;
     }
 }

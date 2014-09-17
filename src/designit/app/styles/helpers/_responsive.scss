@@ -1,0 +1,62 @@
+@include critical() {
+    .hide {
+        &.mobile {
+            display: none;
+            @include media(tablet) {
+                display: block;
+            }
+        }
+        &.tablet {
+            @include media(tablet) {
+                display: none;
+            }
+            @include media(laptop) {
+                display: block;
+            }
+        }
+        &.laptop {
+            @include media(laptop) {
+                display: none;
+            }
+            @include media(desktop) {
+                display: block;
+            }
+        }
+        &.desktop {
+            @include media(desktop) {
+                display: none;
+            }
+        }
+    }
+    .show {
+        &.mobile {
+            @include media(tablet) {
+                display: none;
+            }
+        }
+        &.tablet {
+            display: none;
+            @include media(tablet) {
+                display: block;
+            }
+            @include media(laptop) {
+                display: none;
+            }
+        }
+        &.laptop {
+            display: none;
+            @include media(laptop) {
+                display: block;
+            }
+            @include media(desktop) {
+                display: none;
+            }
+        }
+        &.desktop {
+            display: none;
+            @include media(desktop) {
+                display: block;
+            }
+        }
+    }
+}
