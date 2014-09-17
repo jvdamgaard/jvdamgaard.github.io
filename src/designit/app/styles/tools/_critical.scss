@@ -1,0 +1,10 @@
+@mixin critical() {
+    @if ($critical) {
+        @content;
+    }
+}
+@mixin non-critical() {
+    @if (not $critical) {
+        @content;
+    }
+}

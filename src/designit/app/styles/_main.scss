@@ -3,6 +3,7 @@
 // Vendors
 
 // Tools
+@import "tools/critical";
 
 // Base
 
@@ -13,7 +14,8 @@
 
 // Components
 
-
-.dummy {
-    height: 1600px;
+@include critical() {
+    .dummy {
+        height: 1600px;
+    }
 }

@@ -2,8 +2,6 @@
 // generated on 2014-09-12 using generator-gulp-webapp 0.1.0
 
 var gulp = require('gulp');
-var critical = require('critical');
-var runSequence = require('run-sequence');
 
 var DIST = '../../designit';
 
@@ -11,7 +9,7 @@ var DIST = '../../designit';
 var $ = require('gulp-load-plugins')();
 
 gulp.task('styles', function() {
-    return gulp.src('app/styles/main.scss')
+    return gulp.src(['app/styles/critical.scss', 'app/styles/non-critical.scss'])
         .pipe($.rubySass({
             style: 'expanded',
             precision: 10
@@ -19,14 +17,6 @@ gulp.task('styles', function() {
         .pipe($.autoprefixer('last 1 version'))
         .pipe(gulp.dest('.tmp/styles'))
         .pipe($.size());
-});
-
-gulp.task('copystyles', function() {
-    return gulp.src([DIST + '/styles/main.css'])
-        .pipe($.rename({
-            basename: 'critical' // site.css
-        }))
-        .pipe(gulp.dest(DIST + '/styles'));
 });
 
 gulp.task('scripts', function() {
@@ -41,7 +31,7 @@ gulp.task('templates', function() {
         .pipe($.handlebars())
         .pipe($.defineModule('plain'))
         .pipe($.declare({
-            namespace: 'MyApp.templates' // change this to whatever you want
+            namespace: 'App.templates'
         }))
         .pipe(gulp.dest('.tmp/templates'));
 });
@@ -102,32 +92,10 @@ gulp.task('clean', function() {
     }).pipe($.clean());
 });
 
-gulp.task('critical', function() {
-    critical.generateInline({
-        base: DIST + '/',
-        src: 'index.html',
-        styleTarget: 'styles/main.css',
-        htmlTarget: 'index.html',
-        width: 320,
-        height: 480,
-        minify: true
-    }, function(err) {
-        if (err) {
-            $.util.log(err);
-        }
-    });
-});
-
 gulp.task('build', ['html', 'images', 'fonts', 'extras']);
 
-gulp.task('deploy', function(done) {
-    runSequence(
-        'clean',
-        'build',
-        // 'copystyles',
-        // 'critical',
-        done
-    );
+gulp.task('deploy', ['clean'], function() {
+    gulp.start('build');
 });
 
 gulp.task('connect', function() {

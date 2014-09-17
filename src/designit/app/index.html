@@ -9,9 +9,16 @@
 
         <link href="//polyfill.io/normalize.min.css" rel="stylesheet">
 
-        <!-- build:css styles/main.css -->
-        <link rel="stylesheet" href="styles/main.css">
+        <!-- build:css styles/critical.css -->
+        <link rel="stylesheet" href="/styles/critical.css">
         <!-- endbuild -->
+
+
+        <noscript>
+            <!-- build:css styles/non-critical.css -->
+            <link rel="stylesheet" href="/styles/non-critical.css">
+            <!-- endbuild -->
+        </noscript>
 
         <script src="//polyfill.io/polyfill.min.js"></script>
         <script>(function(h,a){h[a]=h[a].replace('no-js','js')}(document.documentElement,'className'));</script>
@@ -20,13 +27,22 @@
     <body>
 
         <div class="dummy"></div>
-        <div class="animate animate--up">
+        <div class="animate animate--up lazy">
             <h1>Animate in</h1>
-            <p><img src="//placehold.it/800x500" alt="Placehold it">
+            <p><img src="//placehold.it/800x500" alt="Placehold it"></p>
         </div>
 
-        <!-- Google Analytics -->
         <script>
+            // Load non-critical css
+            (function(h,d){'use strict';var ss=d.createElement('link'),
+            ref=d.getElementsByTagName('script')[0];ss.rel = 'stylesheet';
+            ss.href=h;ss.media='only x';ref.parentNode.insertBefore(ss,ref);
+            setTimeout(function(){ss.media='all';});
+            }('/styles/non-critical.css', window.document));
+        </script>
+
+        <script>
+            // Google analytics
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
             function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
             e=o.createElement(i);r=o.getElementsByTagName(i)[0];
@@ -37,13 +53,10 @@
 
         <!-- build:js scripts/main.js -->
         <!-- bower:js -->
-        <script src="bower_components/bugsense/lib/bugsense.js"></script>
+        <script src="/bower_components/bugsense/lib/bugsense.js"></script>
         <!-- endbower -->
-        <!-- endbuild -->
-
-        <!-- build:js scripts/main.js -->
-        <script src="scripts/main.js"></script>
-        <script src="scripts/helpers/animate.js"></script>
+        <script src="/scripts/main.js"></script>
+        <script src="/scripts/helpers/animate.js"></script>
         <!-- endbuild -->
 </body>
 </html>
