@@ -1,11 +1,10 @@
-(function(root) {
+(function(exports, Bugsense) {
     'use strict';
-    var App = root.App = root.App || {};
 
     // Create namespace
-    App.namespace = function(namespace) {
+    exports.namespace = function(namespace) {
         var namespaces = namespace.split('.');
-        var current = App;
+        var current = exports;
         namespaces.forEach(function(name) {
             if (!current[name]) {
                 current[name] = {};
@@ -15,7 +14,12 @@
         return current;
     };
 
-    root.Bugsense.initAndStartSession({
+    Bugsense.initAndStartSession({
         apiKey: '45bbb393'
     });
-}(window));
+
+}((function(window) {
+    'use strict';
+    window.App = window.App || {};
+    return window.App;
+}(window)), window.Bugsense));
