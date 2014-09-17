@@ -3,11 +3,13 @@
 
     // Percent before bottom that scroll is activated
     var OFFSET_PERCENT = 0.2;
+    var ANIMATE_CLASSES = 'up'.split(' ');
 
     var queued = false;
     var animateNodes;
+    var document = window.document;
 
-    var onScroll = function() {
+    var checkForAnimation = function() {
 
         // Avoid continuous scroll events
         if (queued) {
@@ -26,20 +28,23 @@
             var scrollBottom = window.scrollY + (window.innerHeight * (1 - OFFSET_PERCENT));
             animateNodes.forEach(function(node, index) {
                 if (scrollBottom > node.offsetTop) {
-                    node.className = node.className.replace(/\banimate--[a-z]*\b/, '');
+                    ANIMATE_CLASSES.forEach(function(className) {
+                        node.classList.remove(className);
+                    });
                     animateNodes.splice(index, 1);
                 }
             });
 
             // Remove scroll listener when there is no more nodes to animate
             if (animateNodes.length === 0) {
-                window.removeEventListener('scroll', onScroll);
+                window.removeEventListener('scroll', checkForAnimation);
             }
             queued = false;
         }, 50);
     };
 
-    window.addEventListener('scroll', onScroll);
+    window.addEventListener('scroll', checkForAnimation);
+    document.addEventListener('DOMContentLoaded', checkForAnimation);
 
     exports.refresh = function() {
         animateNodes = document.querySelectorAll('.animate');
