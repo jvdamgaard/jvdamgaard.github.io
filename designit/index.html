@@ -9,11 +9,10 @@
 
         <link href="//polyfill.io/normalize.min.css" rel="stylesheet">
 
-        <link rel="stylesheet" href="styles/critical-8e80c948.css">
-
-
+        <link rel="stylesheet" href="styles/critical-dfdd26bd.css">
+        <link rel="prefetch" href="styles/non-critical-d2aa8985.css">
         <noscript>
-            <link rel="stylesheet" href="styles/non-critical-28325707.css">
+            <link rel="stylesheet" href="styles/non-critical-d2aa8985.css">
         </noscript>
 
         <script src="//polyfill.io/polyfill.min.js"></script>
@@ -24,7 +23,7 @@
 
         <div class="grid">
             <div class="row">
-                <div class="all four-laptop all-desktop column hide on mobile tablet">
+                <div class="all four-laptop all-desktop column">
                     <div class="row">
                         <div class="four column"><div class="test">four column</div></div>
                         <div class="four column"><div class="test">four column</div></div>
@@ -33,23 +32,25 @@
                 </div>
                 <div class="six two-tablet four-laptop four-desktop column"><div class="test">six two-tablet four-laptop four-desktop column</div></div>
                 <div class="six ten-tablet four-laptop eight-desktop column"><div class="test">six ten-tablet four-laptop eight-desktop column</div></div>
+                <div class="animate up all column">
+                    <h1>Animate in</h1>
+                    <p><img src="//placehold.it/500x320" width="500" height="320" alt="Placehold it" class="lazy responsive"></p>
+                </div>
             </div>
         </div>
 
 
-        <div class="lazy animate up">
-            <h1>Animate in</h1>
-            <p><img src="//placehold.it/320x500" width="320" height="500" alt="Placehold it"></p>
-        </div>
+
 
         <script>
             // Load non-critical css
-            (function(h,d){'use strict';var ss=d.createElement('link'),
-            ref=d.getElementsByTagName('script')[0];ss.rel = 'stylesheet';
-            ss.href=h;ss.media='only x';ref.parentNode.insertBefore(ss,ref);
-            setTimeout(function(){ss.media='all';});
-            }('styles/non-critical-28325707.css', window.document));
+            (function(h,d,s,r){s=d.createElement('link');r=
+            d.getElementsByTagName('script')[0];s.rel='stylesheet';s.href=h;
+            s.media='only x';r.before(s);setTimeout(function(){s.media='all'})
+            }('styles/non-critical-d2aa8985.css',window.document));
         </script>
+
+        <script src="scripts/main-15747b01.js"></script>
 
         <script>
             // Google analytics
@@ -61,6 +62,6 @@
             ga('create','UA-54769518-1');ga('send','pageview');
         </script>
 
-        <script src="scripts/main-c6661077.js"></script>
+        <script src="scripts/vendor-31ebda10.js"></script>
 </body>
 </html>

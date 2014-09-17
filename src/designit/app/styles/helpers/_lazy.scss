@@ -1,0 +1,10 @@
+@include critical {
+    .js {
+        .lazy {
+            background-image: none !important;
+        }
+        img.lazy {
+            display: none !important;
+        }
+    }
+}

@@ -14,6 +14,7 @@
 // Helpers
 @import "helpers/animate";
 @import "helpers/responsive";
+@import "helpers/lazy";
 
 // Objects
 
@@ -28,7 +29,7 @@
 @include non-critical() {
     .test {
         background-color: #ccc;
-        height: 50px;
+        height: 500px;
         margin: ($grid-padding / 2) 0;
         text-align: center;
     }

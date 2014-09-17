@@ -1,4 +1,4 @@
-(function(exports, Bugsense) {
+(function(exports) {
     'use strict';
 
     // Create namespace
@@ -14,12 +14,8 @@
         return current;
     };
 
-    Bugsense.initAndStartSession({
-        apiKey: '45bbb393'
-    });
-
 }((function(window) {
     'use strict';
     window.App = window.App || {};
     return window.App;
-}(window)), window.Bugsense));
+}(window))));

@@ -12,8 +12,7 @@
         <!-- build:css styles/critical.css -->
         <link rel="stylesheet" href="styles/critical.css">
         <!-- endbuild -->
-
-
+        <link rel="prefetch" href="styles/non-critical.css">
         <noscript>
             <!-- build:css styles/non-critical.css -->
             <link rel="stylesheet" href="styles/non-critical.css">
@@ -28,7 +27,7 @@
 
         <div class="grid">
             <div class="row">
-                <div class="all four-laptop all-desktop column hide on mobile tablet">
+                <div class="all four-laptop all-desktop column">
                     <div class="row">
                         <div class="four column"><div class="test">four column</div></div>
                         <div class="four column"><div class="test">four column</div></div>
@@ -37,23 +36,29 @@
                 </div>
                 <div class="six two-tablet four-laptop four-desktop column"><div class="test">six two-tablet four-laptop four-desktop column</div></div>
                 <div class="six ten-tablet four-laptop eight-desktop column"><div class="test">six ten-tablet four-laptop eight-desktop column</div></div>
+                <div class="animate up all column">
+                    <h1>Animate in</h1>
+                    <p><img src="//placehold.it/500x320" width="500" height="320" alt="Placehold it" class="lazy responsive"></p>
+                </div>
             </div>
         </div>
 
 
-        <div class="lazy animate up">
-            <h1>Animate in</h1>
-            <p><img src="//placehold.it/320x500" width="320" height="500" alt="Placehold it"></p>
-        </div>
+
 
         <script>
             // Load non-critical css
-            (function(h,d){'use strict';var ss=d.createElement('link'),
-            ref=d.getElementsByTagName('script')[0];ss.rel = 'stylesheet';
-            ss.href=h;ss.media='only x';ref.parentNode.insertBefore(ss,ref);
-            setTimeout(function(){ss.media='all';});
-            }('styles/non-critical.css', window.document));
+            (function(h,d,s,r){s=d.createElement('link');r=
+            d.getElementsByTagName('script')[0];s.rel='stylesheet';s.href=h;
+            s.media='only x';r.before(s);setTimeout(function(){s.media='all'})
+            }('styles/non-critical.css',window.document));
         </script>
+
+        <!-- build:js scripts/main.js -->
+        <script src="scripts/main.js"></script>
+        <script src="scripts/helpers/animate.js"></script>
+        <script src="scripts/helpers/lazy-images.js"></script>
+        <!-- endbuild -->
 
         <script>
             // Google analytics
@@ -65,12 +70,11 @@
             ga('create','UA-54769518-1');ga('send','pageview');
         </script>
 
-        <!-- build:js scripts/main.js -->
+        <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
         <script src="/bower_components/bugsense/lib/bugsense.js"></script>
+        <script src="scripts/vendor/bugsense.js"></script>
         <!-- endbower -->
-        <script src="scripts/main.js"></script>
-        <script src="scripts/helpers/animate.js"></script>
         <!-- endbuild -->
 </body>
 </html>
