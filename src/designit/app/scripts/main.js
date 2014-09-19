@@ -1,5 +1,3 @@
-// TODO: Comment in console
-
 (function(exports) {
     'use strict';
 

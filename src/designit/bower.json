@@ -1,11 +1,9 @@
 {
-  "name": "designit",
-  "private": true,
-  "dependencies": {
-    "jquery": "~1.11.0",
-    "handlebars": "~2.0.0",
-    "bugsense": "~2.1.0",
-    "inuitcss": "~5.0.1"
-  },
-  "devDependencies": {}
+    "name": "designit",
+    "private": true,
+    "dependencies": {
+        "bugsense": "~2.1.0",
+        "picturefill": "~2.1.0"
+    },
+    "devDependencies": {}
 }
