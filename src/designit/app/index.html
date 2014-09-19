@@ -7,19 +7,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-        <link href="//polyfill.io/normalize.min.css" rel="stylesheet">
+        <link rel="prefetch" href="styles/non-critical.css">
+        <link rel="prefetch" href="//polyfill.io/polyfill.min.js">
 
+        <link href="//polyfill.io/normalize.min.css" rel="stylesheet">
         <!-- build:css styles/critical.css -->
         <link rel="stylesheet" href="styles/critical.css">
         <!-- endbuild -->
-        <link rel="prefetch" href="styles/non-critical.css">
         <noscript>
             <!-- build:css styles/non-critical.css -->
             <link rel="stylesheet" href="styles/non-critical.css">
             <!-- endbuild -->
         </noscript>
-
-        <script src="//polyfill.io/polyfill.min.js"></script>
         <script>(function(h,a){h[a]=h[a].replace('no-js','js')}(document.documentElement,'className'));</script>
 
     </head>
@@ -38,21 +37,27 @@
                 <div class="six ten-tablet four-laptop eight-desktop column"><div class="test">six ten-tablet four-laptop eight-desktop column</div></div>
                 <div class="animate up all column">
                     <h1>Animate in</h1>
-                    <p><img src="//placehold.it/500x320" width="500" height="320" alt="Placehold it" class="lazy responsive"></p>
+                    <p>
+                        <img
+                            class="lazy responsive"
+                            data-srcset="//placehold.it/1170x585/ 1170w, //placehold.it/970x485/ 970w, //placehold.it/640x320/ 640w, //placehold.it/320x160/ 320w"
+                            sizes="(min-width: 1200px) 1170px, (min-width: 1000px) 970px,  100vw"
+                            alt="Placeholder" />
+                    </p>
                 </div>
             </div>
         </div>
-
-
-
 
         <script>
             // Load non-critical css
             (function(h,d,s,r){s=d.createElement('link');r=
             d.getElementsByTagName('script')[0];s.rel='stylesheet';s.href=h;
-            s.media='only x';r.before(s);setTimeout(function(){s.media='all'})
-            }('styles/non-critical.css',window.document));
+            s.media='only x';r.parentNode.insertBefore(s,r);setTimeout(
+            function(){s.media='all'})}('styles/non-critical.css',
+            window.document));
         </script>
+
+        <script src="//polyfill.io/polyfill.min.js"></script>
 
         <!-- build:js scripts/main.js -->
         <script src="scripts/main.js"></script>

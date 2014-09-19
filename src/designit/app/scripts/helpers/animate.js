@@ -26,12 +26,14 @@
 
             // Remove animate--* class if scroll position is reached
             var scrollBottom = window.scrollY + (window.innerHeight * (1 - OFFSET_PERCENT));
-            animateNodes.forEach(function(node, index) {
+            animateNodes.forEach(function(node) {
                 if (scrollBottom > node.offsetTop) {
                     ANIMATE_CLASSES.forEach(function(className) {
                         node.classList.remove(className);
                     });
-                    animateNodes.splice(index, 1);
+                    animateNodes = animateNodes.filter(function(animateNode) {
+                        return animateNode !== node;
+                    });
                 }
             });
 

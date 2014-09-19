@@ -2,11 +2,31 @@
     'use strict';
 
     // Percent under bottom of screen images i loaded
-    var OFFSET_PERCENT = 0.2;
+    var OFFSET_PERCENT = 0.5;
 
     var queued = false;
     var lazyNodes;
     var document = window.document;
+
+    var getHiddenImgOffsetHeight = function(img) {
+        var offsetTop;
+        var tempElement = document.createElement('div');
+        tempElement.height = 0;
+        tempElement.width = 0;
+        img.before(tempElement);
+        offsetTop = tempElement.offsetTop;
+        tempElement.remove();
+        return offsetTop;
+    };
+
+    var loadImgSrc = function(img) {
+        img.classList.add('animate');
+        img.classList.add('fade-in');
+        img.addEventListener('load', function() {
+            img.classList.remove('fade-in');
+        });
+        img.srcset = img.dataset.srcset;
+    };
 
     var checkForLazyImages = function() {
 
@@ -25,19 +45,18 @@
 
             // Remove lazy class if scroll position is reached
             var scrollBottom = window.scrollY + (window.innerHeight * (1 + OFFSET_PERCENT));
-            lazyNodes.forEach(function(node, index) {
-                var offsetTop = node.offsetTop;
-                if (node.matches('img')) { // Can't get offsetTop of hidden element
-                    var tempElement = document.createElement('div');
-                    tempElement.height = 0;
-                    tempElement.width = 0;
-                    node.before(tempElement);
-                    offsetTop = tempElement.offsetTop;
-                    tempElement.remove();
-                }
+            lazyNodes.forEach(function(node) {
+                var isImg = node.matches('img');
+                var offsetTop = isImg ? getHiddenImgOffsetHeight(node) : node.offsetTop;
+
                 if (scrollBottom > offsetTop) {
+                    if (isImg) {
+                        loadImgSrc(node);
+                    }
                     node.classList.remove('lazy');
-                    lazyNodes.splice(index, 1);
+                    lazyNodes = lazyNodes.filter(function(lazyNode) {
+                        return lazyNode !== node;
+                    });
                 }
             });
 
