@@ -7,12 +7,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-        <link rel="prefetch" href="styles/non-critical.css">
-        <link rel="prefetch" href="//polyfill.io/polyfill.min.js">
-
+        <!-- When ready: <link href="//cdn.polyfill.io/v1/normalize.min.css" rel="stylesheet"> -->
         <link href="//polyfill.io/normalize.min.css" rel="stylesheet">
         <!-- build:css styles/critical.css -->
         <link rel="stylesheet" href="styles/critical.css">
+        <link rel="prefetch" href="styles/non-critical.css">
         <!-- endbuild -->
         <noscript>
             <!-- build:css styles/non-critical.css -->
@@ -20,7 +19,6 @@
             <!-- endbuild -->
         </noscript>
         <script>(function(h,a){h[a]=h[a].replace('no-js','js')}(document.documentElement,'className'));</script>
-
     </head>
     <body>
 
@@ -57,10 +55,15 @@
             window.document));
         </script>
 
-        <script src="//polyfill.io/polyfill.min.js"></script>
+        <script src="//cdn.polyfill.io/v1/polyfill.min.js"></script>
+        <!-- Delete when Promise and es6 string is supported by cdn.polyfill.io -->
+        <script>_Promise=Promise</script>
+        <script src="//cdn.polyfill.io/v1/polyfill.min.js?features=modernizr:promises,modernizr:promises|always"></script>
+        <script>if(_Promise){Promise=_Promise}</script>
+        <!-- Delete end -->
+        <script async src="//cdnjs.cloudflare.com/ajax/libs/picturefill/2.1.0/picturefill.min.js"></script>
 
         <!-- build:js scripts/main.js -->
-        <script src="bower_components/picturefill/dist/picturefill.js"></script>
         <script src="scripts/main.js"></script>
         <script src="scripts/helpers/animate.js"></script>
         <script src="scripts/helpers/lazy-images.js"></script>
@@ -78,9 +81,8 @@
         </script>
 
         <!-- build:js scripts/enhancement.js -->
-        <!-- bower:js -->
         <script src="bower_components/bugsense/lib/bugsense.js"></script>
-        <!-- endbower -->
+        <script src="scripts/vendor/bugsense.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -7,16 +7,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-        <link rel="prefetch" href="styles/non-critical-d41d8cd9.css">
-        <link rel="prefetch" href="//polyfill.io/polyfill.min.js">
-
+        <!-- When ready: <link href="//cdn.polyfill.io/v1/normalize.min.css" rel="stylesheet"> -->
         <link href="//polyfill.io/normalize.min.css" rel="stylesheet">
         <link rel="stylesheet" href="styles/critical-e7a79a3c.css">
         <noscript>
             <link rel="stylesheet" href="styles/non-critical-d41d8cd9.css">
         </noscript>
         <script>(function(h,a){h[a]=h[a].replace('no-js','js')}(document.documentElement,'className'));</script>
-
     </head>
     <body>
 
@@ -53,9 +50,15 @@
             window.document));
         </script>
 
-        <script src="//polyfill.io/polyfill.min.js"></script>
+        <script src="//cdn.polyfill.io/v1/polyfill.min.js"></script>
+        <!-- Delete when Promise and es6 string is supported by cdn.polyfill.io -->
+        <script>_Promise=Promise</script>
+        <script src="//cdn.polyfill.io/v1/polyfill.min.js?features=modernizr:promises,modernizr:promises|always"></script>
+        <script>if(_Promise){Promise=_Promise}</script>
+        <!-- Delete end -->
+        <script async src="//cdnjs.cloudflare.com/ajax/libs/picturefill/2.1.0/picturefill.min.js"></script>
 
-        <script src="scripts/main-9feeab4e.js"></script>
+        <script src="scripts/main-3290b93d.js"></script>
 
         <script>
             // Google analytics
@@ -67,6 +70,6 @@
             ga('create','UA-54769518-1');ga('send','pageview');
         </script>
 
-        <script src="scripts/enhancement-96a344fc.js"></script>
+        <script src="scripts/enhancement-31ebda10.js"></script>
 </body>
 </html>
