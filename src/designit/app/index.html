@@ -26,22 +26,41 @@
 
         <div class="grid">
             <div class="row">
-                <div class="all four-laptop all-desktop column">
+                <div class="all four-md all-lg col">
                     <div class="row">
-                        <div class="four column"><div class="test">four column</div></div>
-                        <div class="four column"><div class="test">four column</div></div>
-                        <div class="four column"><div class="test">four column</div></div>
+                        <div class="four col">
+                            <div class="test">four</div>
+                        </div>
+                        <div class="four col">
+                            <div class="test">four</div>
+                        </div>
+                        <div class="four col">
+                            <div class="test">four</div>
+                        </div>
                     </div>
                 </div>
-                <div class="six two-tablet four-laptop four-desktop column"><div class="test">six two-tablet four-laptop four-desktop column</div></div>
-                <div class="six ten-tablet four-laptop eight-desktop column"><div class="test">six ten-tablet four-laptop eight-desktop column</div></div>
-                <div class="animate up all column">
+                <div class="six two-sm four-md col">
+                    <div class="test">
+                        <span class="show xs">six</span>
+                        <span class="show sm">two</span>
+                        <span class="show md lg">four</span>
+                    </div>
+                </div>
+                <div class="six ten-sm four-md eight-lg col">
+                    <div class="test">
+                        <span class="show xs">six</span>
+                        <span class="show sm">ten</span>
+                        <span class="show md">four</span>
+                        <span class="show lg">eight</span>
+                    </div>
+                </div>
+                <div class="animate up all col">
                     <h1>Animate in</h1>
                     <p>
                         <img
                             class="lazy responsive"
-                            data-srcset="//placehold.it/1170x585/ 1170w, //placehold.it/970x485/ 970w, //placehold.it/640x320/ 640w, //placehold.it/320x160/ 320w"
-                            sizes="(min-width: 1200px) 1170px, (min-width: 1000px) 970px,  100vw"
+                            data-srcset="//placehold.it/1140x570/ 1140w, //placehold.it/940x470/ 940w, //placehold.it/600x300/ 600w, //placehold.it/290x145/ 290w"
+                            sizes="(min-width: 1200px) 1140px, (min-width: 1000px) 940px, calc(100vw - 60px)"
                             alt="Placeholder" />
                     </p>
                 </div>

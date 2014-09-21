@@ -2,14 +2,14 @@
 
     .grid {
         margin: 0 auto;
-        padding: 0 ($grid-padding / 2);
+        padding: 0 $grid-padding;
 
-        @include media(laptop) {
-            width: ($break-laptop - $grid-padding);
+        @include media(md) {
+            width: $break-md;
         }
 
-        @include media(desktop) {
-            width: ($break-desktop - $grid-padding);
+        @include media(lg) {
+            width: $break-lg;
         }
     }
 
@@ -24,7 +24,7 @@
 
     }
 
-    .column {
+    .col {
         float: left;
         padding: 0 ($grid-padding / 2);
         width: 100% / 12 * 1;
@@ -43,57 +43,57 @@
         &.all    { width: 100% / 12 * 12; }
     }
 
-    @include media(tablet) {
-        .column {
-            &.one-tablet    { width: 100% / 12 * 1; }
-            &.two-tablet    { width: 100% / 12 * 2; }
-            &.three-tablet  { width: 100% / 12 * 3; }
-            &.four-tablet   { width: 100% / 12 * 4; }
-            &.five-tablet   { width: 100% / 12 * 5; }
-            &.six-tablet    { width: 100% / 12 * 6; }
-            &.seven-tablet  { width: 100% / 12 * 7; }
-            &.eight-tablet  { width: 100% / 12 * 8; }
-            &.nine-tablet   { width: 100% / 12 * 9; }
-            &.ten-tablet    { width: 100% / 12 * 10; }
-            &.eleven-tablet { width: 100% / 12 * 11; }
-            &.twelve-tablet { width: 100% / 12 * 12; }
-            &.all-tablet    { width: 100% / 12 * 12; }
+    @include media(sm) {
+        .col {
+            &.one-sm    { width: 100% / 12 * 1; }
+            &.two-sm    { width: 100% / 12 * 2; }
+            &.three-sm  { width: 100% / 12 * 3; }
+            &.four-sm   { width: 100% / 12 * 4; }
+            &.five-sm   { width: 100% / 12 * 5; }
+            &.six-sm    { width: 100% / 12 * 6; }
+            &.seven-sm  { width: 100% / 12 * 7; }
+            &.eight-sm  { width: 100% / 12 * 8; }
+            &.nine-sm   { width: 100% / 12 * 9; }
+            &.ten-sm    { width: 100% / 12 * 10; }
+            &.eleven-sm { width: 100% / 12 * 11; }
+            &.twelve-sm { width: 100% / 12 * 12; }
+            &.all-sm    { width: 100% / 12 * 12; }
         }
     }
 
-    @include media(laptop) {
-        .column {
-            &.one-laptop    { width: 100% / 12 * 1; }
-            &.two-laptop    { width: 100% / 12 * 2; }
-            &.three-laptop  { width: 100% / 12 * 3; }
-            &.four-laptop   { width: 100% / 12 * 4; }
-            &.five-laptop   { width: 100% / 12 * 5; }
-            &.six-laptop    { width: 100% / 12 * 6; }
-            &.seven-laptop  { width: 100% / 12 * 7; }
-            &.eight-laptop  { width: 100% / 12 * 8; }
-            &.nine-laptop   { width: 100% / 12 * 9; }
-            &.ten-laptop    { width: 100% / 12 * 10; }
-            &.eleven-laptop { width: 100% / 12 * 11; }
-            &.twelve-laptop { width: 100% / 12 * 12; }
-            &.all-laptop    { width: 100% / 12 * 12; }
+    @include media(md) {
+        .col {
+            &.one-md    { width: 100% / 12 * 1; }
+            &.two-md    { width: 100% / 12 * 2; }
+            &.three-md  { width: 100% / 12 * 3; }
+            &.four-md   { width: 100% / 12 * 4; }
+            &.five-md   { width: 100% / 12 * 5; }
+            &.six-md    { width: 100% / 12 * 6; }
+            &.seven-md  { width: 100% / 12 * 7; }
+            &.eight-md  { width: 100% / 12 * 8; }
+            &.nine-md   { width: 100% / 12 * 9; }
+            &.ten-md    { width: 100% / 12 * 10; }
+            &.eleven-md { width: 100% / 12 * 11; }
+            &.twelve-md { width: 100% / 12 * 12; }
+            &.all-md    { width: 100% / 12 * 12; }
         }
     }
 
-    @include media(desktop) {
-        .column {
-            &.one-desktop    { width: 100% / 12 * 1; }
-            &.two-desktop    { width: 100% / 12 * 2; }
-            &.three-desktop  { width: 100% / 12 * 3; }
-            &.four-desktop   { width: 100% / 12 * 4; }
-            &.five-desktop   { width: 100% / 12 * 5; }
-            &.six-desktop    { width: 100% / 12 * 6; }
-            &.seven-desktop  { width: 100% / 12 * 7; }
-            &.eight-desktop  { width: 100% / 12 * 8; }
-            &.nine-desktop   { width: 100% / 12 * 9; }
-            &.ten-desktop    { width: 100% / 12 * 10; }
-            &.eleven-desktop { width: 100% / 12 * 11; }
-            &.twelve-desktop { width: 100% / 12 * 12; }
-            &.all-desktop    { width: 100% / 12 * 12; }
+    @include media(lg) {
+        .col {
+            &.one-lg    { width: 100% / 12 * 1; }
+            &.two-lg    { width: 100% / 12 * 2; }
+            &.three-lg  { width: 100% / 12 * 3; }
+            &.four-lg   { width: 100% / 12 * 4; }
+            &.five-lg   { width: 100% / 12 * 5; }
+            &.six-lg    { width: 100% / 12 * 6; }
+            &.seven-lg  { width: 100% / 12 * 7; }
+            &.eight-lg  { width: 100% / 12 * 8; }
+            &.nine-lg   { width: 100% / 12 * 9; }
+            &.ten-lg    { width: 100% / 12 * 10; }
+            &.eleven-lg { width: 100% / 12 * 11; }
+            &.twelve-lg { width: 100% / 12 * 12; }
+            &.all-lg    { width: 100% / 12 * 12; }
         }
     }
 
