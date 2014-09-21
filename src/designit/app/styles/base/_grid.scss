@@ -1,8 +1,8 @@
 @include critical() {
 
     .grid {
-        width: 100%;
         margin: 0 auto;
+        padding: 0 ($grid-padding / 2);
 
         @include media(laptop) {
             width: ($break-laptop - $grid-padding);
