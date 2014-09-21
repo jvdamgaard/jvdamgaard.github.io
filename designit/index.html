@@ -7,13 +7,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-        <!-- When ready: <link href="//cdn.polyfill.io/v1/normalize.min.css" rel="stylesheet"> -->
-        <link href="//polyfill.io/normalize.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="styles/critical-e7a79a3c.css">
+        <style>*{box-sizing:border-box}body,html{padding:0;margin:0}.grid{width:100%;margin:0 auto}.row{margin:0 -15px}.row:after{content:' ';display:table;width:100%}.column{float:left;padding:0 15px;width:8.3333333333%}.column.two{width:16.6666666667%}.column.three{width:25%}.column.four{width:33.3333333333%}.column.five{width:41.6666666667%}.column.six{width:50%}.column.seven{width:58.3333333333%}.column.eight{width:66.6666666667%}.column.nine{width:75%}.column.ten{width:83.3333333333%}.column.eleven{width:91.6666666667%}.column.twelve,.column.all{width:100%}.js .animate{transition:all .6s ease-out 0s;-webkit-transform:translateZ(0);transform:translateZ(0)}.js .animate.up{-webkit-transform:translateY(40px);transform:translateY(40px);opacity:0}.js .animate.fade-in{opacity:0}img.responsive{width:100%;height:auto}.hide.mobile,.show.tablet,.show.laptop,.show.desktop{display:none}.js .lazy{background-image:none!important}.js img.lazy{display:none!important}.test{background-color:#ccc;height:500px;margin:15px 0;text-align:center}@media only screen and (min-width:600px){.column.one-tablet{width:8.3333333333%}.column.two-tablet{width:16.6666666667%}.column.three-tablet{width:25%}.column.four-tablet{width:33.3333333333%}.column.five-tablet{width:41.6666666667%}.column.six-tablet{width:50%}.column.seven-tablet{width:58.3333333333%}.column.eight-tablet{width:66.6666666667%}.column.nine-tablet{width:75%}.column.ten-tablet{width:83.3333333333%}.column.eleven-tablet{width:91.6666666667%}.column.twelve-tablet,.column.all-tablet{width:100%}.hide.mobile{display:block}.hide.tablet,.show.mobile{display:none}.show.tablet{display:block}}@media only screen and (min-width:1000px){.grid{width:970px}.column.one-laptop{width:8.3333333333%}.column.two-laptop{width:16.6666666667%}.column.three-laptop{width:25%}.column.four-laptop{width:33.3333333333%}.column.five-laptop{width:41.6666666667%}.column.six-laptop{width:50%}.column.seven-laptop{width:58.3333333333%}.column.eight-laptop{width:66.6666666667%}.column.nine-laptop{width:75%}.column.ten-laptop{width:83.3333333333%}.column.eleven-laptop{width:91.6666666667%}.column.twelve-laptop,.column.all-laptop{width:100%}.hide.tablet{display:block}.hide.laptop,.show.tablet{display:none}.show.laptop{display:block}}@media only screen and (min-width:1200px){.grid{width:1170px}.column.one-desktop{width:8.3333333333%}.column.two-desktop{width:16.6666666667%}.column.three-desktop{width:25%}.column.four-desktop{width:33.3333333333%}.column.five-desktop{width:41.6666666667%}.column.six-desktop{width:50%}.column.seven-desktop{width:58.3333333333%}.column.eight-desktop{width:66.6666666667%}.column.nine-desktop{width:75%}.column.ten-desktop{width:83.3333333333%}.column.eleven-desktop{width:91.6666666667%}.column.twelve-desktop,.column.all-desktop{width:100%}.hide.laptop{display:block}.hide.desktop,.show.laptop{display:none}.show.desktop{display:block}}</style>
+
+        <link rel="prefetch" href="styles/non-critical-d41d8cd9.css">
+        <link rel="prefetch" href="//polyfill.io/normalize.min.css">
+        <!-- When ready: <link rel="prefetch" href="//cdn.polyfill.io/v1/normalize.min.css"> -->
+
         <noscript>
             <link rel="stylesheet" href="styles/non-critical-d41d8cd9.css">
         </noscript>
-        <script>(function(h,a){h[a]=h[a].replace('no-js','js')}(document.documentElement,'className'));</script>
+
+        <!-- Set html class to `js` -->
+        <script>!function(e,c){"use strict";e[c]=e[c].replace("no-js","js")}(document.documentElement,"className");</script>
     </head>
     <body>
 
@@ -41,14 +46,8 @@
             </div>
         </div>
 
-        <script>
-            // Load non-critical css
-            (function(h,d,s,r){s=d.createElement('link');r=
-            d.getElementsByTagName('script')[0];s.rel='stylesheet';s.href=h;
-            s.media='only x';r.parentNode.insertBefore(s,r);setTimeout(
-            function(){s.media='all'})}('styles/non-critical-d41d8cd9.css',
-            window.document));
-        </script>
+        <!-- Load non-critical css -->
+        <script>!function(e,t,n){"use strict";for(n=0;n<e.length;n++){var i=e[n],l=t.createElement("link"),s=t.getElementsByTagName("script")[0];l.rel="stylesheet",l.href=i,l.media="only x",s.parentNode.insertBefore(l,s),setTimeout(function(){l.media="all"})}}(["styles/non-critical-d41d8cd9.css","//polyfill.io/normalize.min.css"],window.document);</script>
 
         <script src="//cdn.polyfill.io/v1/polyfill.min.js"></script>
         <!-- Delete when Promise and es6 string is supported by cdn.polyfill.io -->
@@ -58,18 +57,8 @@
         <!-- Delete end -->
         <script async src="//cdnjs.cloudflare.com/ajax/libs/picturefill/2.1.0/picturefill.min.js"></script>
 
-        <script src="scripts/main-3290b93d.js"></script>
+        <script src="scripts/main-5e9b48ca.js"></script>
 
-        <script>
-            // Google analytics
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-54769518-1');ga('send','pageview');
-        </script>
-
-        <script src="scripts/enhancement-31ebda10.js"></script>
+        <script src="scripts/enhancement-39463403.js"></script>
 </body>
 </html>
