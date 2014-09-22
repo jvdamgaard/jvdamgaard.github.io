@@ -1,0 +1,12 @@
+.img.slider {
+
+    position: relative;
+    overflow: hidden;
+
+    & > img {
+        left: 0;
+        position: absolute;
+        z-index: -1;
+        transform: translateZ(0);
+    }
+}

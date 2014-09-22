@@ -12,11 +12,12 @@
 @import "base/grid";
 
 // Helpers
-@import "helpers/animate";
-@import "helpers/responsive";
-@import "helpers/lazy";
 
 // Objects
+@import "objects/animate";
+@import "objects/responsive";
+@import "objects/lazy";
+@import "objects/image-slider";
 
 // Components
 
