@@ -64,13 +64,20 @@
                             alt="Placeholder" />
                     </p>
                 </div>
+                <div class="col four animate up">
+                    <div class="test">0</div>
+                </div>
+                <div class="col four animate up" data-animate-delay="200">
+                    <div class="test">200</div>
+                </div>
+                <div class="col four animate up" data-animate-delay="400">
+                    <div class="test">400</div>
+                </div>
             </div>
         </div>
 
         <!-- Load non-critical css -->
         <script src="scripts/inline/load-non-critical-css.js" inline></script>
-
-        <script src="//cdn.polyfill.io/v1/polyfill.min.js"></script>
 
         <!-- Delete when Promise and es6 string is supported by cdn.polyfill.io -->
         <script>_Promise=Promise</script>
@@ -78,6 +85,8 @@
         <script>if(_Promise){Promise=_Promise}</script>
         <script src="scripts/inline/load-picturefill.js" inline></script>
         <!-- Delete end -->
+
+        <script src="//cdn.polyfill.io/v1/polyfill.min.js"></script>
 
         <!-- build:js scripts/main.js -->
         <script src="scripts/main.js"></script>

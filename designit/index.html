@@ -10,8 +10,8 @@
         <style>*{box-sizing:border-box}body,html{padding:0;margin:0}.grid{margin:0 auto;padding:0 30px}.row{margin:0 -15px}.row:after{content:' ';display:table;width:100%}.col{float:left;padding:0 15px;width:8.3333333333%}.col.two{width:16.6666666667%}.col.three{width:25%}.col.four{width:33.3333333333%}.col.five{width:41.6666666667%}.col.six{width:50%}.col.seven{width:58.3333333333%}.col.eight{width:66.6666666667%}.col.nine{width:75%}.col.ten{width:83.3333333333%}.col.eleven{width:91.6666666667%}.col.twelve,.col.all{width:100%}.js .animate{transition:all .6s ease-out 0s;-webkit-transform:translateZ(0);transform:translateZ(0)}.js .animate.up{-webkit-transform:translateY(40px);transform:translateY(40px);opacity:0}.js .animate.fade-in{opacity:0}img.responsive{width:100%;height:auto}.hide.xs,.show.sm,.show.md,.show.lg{display:none}.js .lazy{background-image:none!important}.js img.lazy{display:none!important}.test{background-color:#ccc;height:500px;margin:15px 0;text-align:center}@media only screen and (min-width:600px){.col.one-sm{width:8.3333333333%}.col.two-sm{width:16.6666666667%}.col.three-sm{width:25%}.col.four-sm{width:33.3333333333%}.col.five-sm{width:41.6666666667%}.col.six-sm{width:50%}.col.seven-sm{width:58.3333333333%}.col.eight-sm{width:66.6666666667%}.col.nine-sm{width:75%}.col.ten-sm{width:83.3333333333%}.col.eleven-sm{width:91.6666666667%}.col.twelve-sm,.col.all-sm{width:100%}.hide.xs{display:block}.hide.sm,.show.xs{display:none}.show.sm{display:block}}@media only screen and (min-width:1000px){.grid{width:1000px}.col.one-md{width:8.3333333333%}.col.two-md{width:16.6666666667%}.col.three-md{width:25%}.col.four-md{width:33.3333333333%}.col.five-md{width:41.6666666667%}.col.six-md{width:50%}.col.seven-md{width:58.3333333333%}.col.eight-md{width:66.6666666667%}.col.nine-md{width:75%}.col.ten-md{width:83.3333333333%}.col.eleven-md{width:91.6666666667%}.col.twelve-md,.col.all-md{width:100%}.hide.sm{display:block}.hide.md,.show.sm{display:none}.show.md{display:block}}@media only screen and (min-width:1200px){.grid{width:1200px}.col.one-lg{width:8.3333333333%}.col.two-lg{width:16.6666666667%}.col.three-lg{width:25%}.col.four-lg{width:33.3333333333%}.col.five-lg{width:41.6666666667%}.col.six-lg{width:50%}.col.seven-lg{width:58.3333333333%}.col.eight-lg{width:66.6666666667%}.col.nine-lg{width:75%}.col.ten-lg{width:83.3333333333%}.col.eleven-lg{width:91.6666666667%}.col.twelve-lg,.col.all-lg{width:100%}.hide.md{display:block}.hide.lg,.show.md{display:none}.show.lg{display:block}}</style>
 
         <link rel="prefetch" href="styles/non-critical-d41d8cd9.css">
-        <link rel="prefetch" href="//polyfill.io/normalize.min.css">
-        <!-- When ready: <link rel="prefetch" href="//cdn.polyfill.io/v1/normalize.min.css"> -->
+        <link rel="prefetch" href="//polyfill.io/normalize.min.css"> <!-- When ready: <link rel="prefetch" href="//cdn.polyfill.io/v1/normalize.min.css"> -->
+        <link rel="prefetch-dns" href="//cdnjs.cloudflare.com">
 
         <noscript>
             <link rel="stylesheet" href="styles/non-critical-d41d8cd9.css">
@@ -62,23 +62,32 @@
                             alt="Placeholder" />
                     </p>
                 </div>
+                <div class="col four animate up">
+                    <div class="test">0</div>
+                </div>
+                <div class="col four animate up" data-animate-delay="200">
+                    <div class="test">200</div>
+                </div>
+                <div class="col four animate up" data-animate-delay="400">
+                    <div class="test">400</div>
+                </div>
             </div>
         </div>
 
         <!-- Load non-critical css -->
         <script>!function(e,t,n){"use strict";for(n=0;n<e.length;n++){var i=e[n],l=t.createElement("link"),s=t.getElementsByTagName("script")[0];l.rel="stylesheet",l.href=i,l.media="only x",s.parentNode.insertBefore(l,s),setTimeout(function(){l.media="all"})}}(["styles/non-critical-d41d8cd9.css","//polyfill.io/normalize.min.css"],window.document);</script>
 
-        <script src="//cdn.polyfill.io/v1/polyfill.min.js"></script>
         <!-- Delete when Promise and es6 string is supported by cdn.polyfill.io -->
         <script>_Promise=Promise</script>
         <script src="//cdn.polyfill.io/v1/polyfill.min.js?features=modernizr:promises,modernizr:promises|always"></script>
         <script>if(_Promise){Promise=_Promise}</script>
+        <script>!function(e){"use strict";if(!("srcset"in e.createElement("img"))){var t=e.createElement("script"),c=e.getElementsByTagName("script")[0];t.async=1,t.src="//cdnjs.cloudflare.com/ajax/libs/picturefill/2.1.0/picturefill.min.js",c.parentNode.insertBefore(t,c)}}(document);</script>
         <!-- Delete end -->
 
-        <script src="scripts/main-5e9b48ca.js"></script>
+        <script src="//cdn.polyfill.io/v1/polyfill.min.js"></script>
 
-        <script async src="//cdnjs.cloudflare.com/ajax/libs/picturefill/2.1.0/picturefill.min.js"></script>
+        <script src="scripts/main-e7ad62a1.js"></script>
 
-        <script src="scripts/enhancement-39463403.js"></script>
+        <script src="scripts/enhancement-97deb598.js"></script>
 </body>
 </html>
