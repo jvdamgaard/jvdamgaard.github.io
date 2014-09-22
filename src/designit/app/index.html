@@ -10,8 +10,8 @@
         <link rel="stylesheet" href="styles/inline/critical.css" inline>
 
         <link rel="prefetch" href="styles/non-critical.css">
-        <link rel="prefetch" href="//polyfill.io/normalize.min.css">
-        <!-- When ready: <link rel="prefetch" href="//cdn.polyfill.io/v1/normalize.min.css"> -->
+        <link rel="prefetch" href="//polyfill.io/normalize.min.css"> <!-- When ready: <link rel="prefetch" href="//cdn.polyfill.io/v1/normalize.min.css"> -->
+        <link rel="prefetch-dns" href="//cdnjs.cloudflare.com">
 
         <noscript>
             <!-- build:css styles/non-critical.css -->
@@ -71,10 +71,12 @@
         <script src="scripts/inline/load-non-critical-css.js" inline></script>
 
         <script src="//cdn.polyfill.io/v1/polyfill.min.js"></script>
+
         <!-- Delete when Promise and es6 string is supported by cdn.polyfill.io -->
         <script>_Promise=Promise</script>
         <script src="//cdn.polyfill.io/v1/polyfill.min.js?features=modernizr:promises,modernizr:promises|always"></script>
         <script>if(_Promise){Promise=_Promise}</script>
+        <script src="scripts/inline/load-picturefill.js" inline></script>
         <!-- Delete end -->
 
         <!-- build:js scripts/main.js -->
@@ -82,12 +84,10 @@
         <script src="scripts/helpers/animate.js"></script>
         <script src="scripts/helpers/lazy-images.js"></script>
         <script src="scripts/helpers/ajax.js"></script>
-        <script src="scripts/components/console-message.js"></script>
         <!-- endbuild -->
 
-        <script async src="//cdnjs.cloudflare.com/ajax/libs/picturefill/2.1.0/picturefill.min.js"></script>
-
         <!-- build:js scripts/enhancement.js -->
+        <script src="scripts/components/console-message.js"></script>
         <script src="scripts/vendor/google-analytics.js"></script>
         <script src="bower_components/bugsense/lib/bugsense.js"></script>
         <script src="scripts/vendor/bugsense.js"></script>
