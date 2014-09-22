@@ -32,7 +32,10 @@
         sliderImages.forEach(setTransform);
     };
 
-    window.addEventListener('scroll', positionImages);
-    document.addEventListener('DOMContentLoaded', positionImages);
+    if (sliderImages) {
+        window.addEventListener('scroll', positionImages);
+        document.addEventListener('DOMContentLoaded', positionImages);
+        // window.setInterval(positionImages, 100);
+    }
 
 }(window.App.namespace('helpers.sliderImages'), document, window));
