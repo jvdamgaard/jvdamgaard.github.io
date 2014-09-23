@@ -1,13 +1,18 @@
-.img.slider {
+@include critical {
+    .img.slider {
 
-    position: relative;
-    overflow: hidden;
+        position: relative;
+        overflow: hidden;
+        background: transparent !important;
 
-    & > img {
-        left: 0;
-        position: absolute;
-        z-index: -1;
-        height: 100%;
-        transform: translateZ(0);
+        & > img {
+            left: 0;
+            top: 0;
+            position: absolute;
+            z-index: -1;
+            min-height: 125%;
+            min-width: 100%;
+            transform: translateZ(0);
+        }
     }
 }

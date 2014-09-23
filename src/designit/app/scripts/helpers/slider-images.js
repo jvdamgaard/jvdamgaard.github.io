@@ -2,8 +2,8 @@
     'use strict';
 
     var setTransform = function(image) {
-        var offset = (window.scrollY - image.getDocumentOffset()) * 0.75;
-        image.style[transformProperty] = 'translateY(' + offset + 'px)';
+        var offset = (window.scrollY - image.getDocumentOffsetTop()) * 0.75;
+        image.style[transformProperty] = 'translate3d(0, ' + offset + 'px, 0)';
     };
 
     // Get prefixed transform property
@@ -34,8 +34,11 @@
 
     if (sliderImages) {
         window.addEventListener('scroll', positionImages);
+        window.addEventListener('resize', positionImages);
         document.addEventListener('DOMContentLoaded', positionImages);
-        // window.setInterval(positionImages, 100);
+        sliderImages.forEach(function(sliderImage) {
+            sliderImage.addEventListener('load', positionImages);
+        });
     }
 
 }(window.App.namespace('helpers.sliderImages'), document, window));

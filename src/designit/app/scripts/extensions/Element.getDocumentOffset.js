@@ -1,12 +1,14 @@
 (function(Element) {
     'use strict';
-    Element.prototype.getDocumentOffset = function() {
+    Element.prototype.getDocumentOffsetTop = function() {
         var element = this;
         var offset = 0;
-        while (element.parentNode) {
+
+        while (element && !isNaN(element.offsetTop)) {
             offset += element.offsetTop;
-            element = element.parentNode;
+            element = element.offsetParent;
         }
         return offset;
     };
+
 }(Element));

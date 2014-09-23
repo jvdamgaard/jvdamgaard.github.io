@@ -2,19 +2,19 @@
     'use strict';
 
     // Percent under bottom of screen images i loaded
-    var OFFSET_PERCENT = 0.5;
+    var OFFSET_PERCENT = 0;
 
     var queued = false;
     var lazyNodes;
     var document = window.document;
 
-    var getHiddenImgOffsetHeight = function(img) {
+    var getHiddenImgOffsetTop = function(img) {
         var offsetTop;
         var tempElement = document.createElement('div');
         tempElement.height = 0;
         tempElement.width = 0;
         img.before(tempElement);
-        offsetTop = tempElement.offsetTop;
+        offsetTop = tempElement.getDocumentOffsetTop();
         tempElement.remove();
         return offsetTop;
     };
@@ -25,7 +25,11 @@
         img.addEventListener('load', function() {
             img.classList.remove('fade-in');
         });
-        img.srcset = img.dataset.srcset;
+        if (img.dataset.srcset) {
+            img.srcset = img.dataset.srcset;
+        } else if (img.dataset.src) {
+            img.src = img.dataset.src;
+        }
     };
 
     var checkForLazyImages = function() {
@@ -47,8 +51,7 @@
             var scrollBottom = window.scrollY + (window.innerHeight * (1 + OFFSET_PERCENT));
             lazyNodes.forEach(function(node) {
                 var isImg = node.matches('img');
-                var offsetTop = isImg ? getHiddenImgOffsetHeight(node) : node.offsetTop;
-
+                var offsetTop = isImg ? getHiddenImgOffsetTop(node) : node.getDocumentOffsetTop();
                 if (scrollBottom > offsetTop) {
                     if (isImg) {
                         loadImgSrc(node);
@@ -70,6 +73,7 @@
 
     window.addEventListener('scroll', checkForLazyImages);
     document.addEventListener('DOMContentLoaded', checkForLazyImages);
+    window.addEventListener('resize', checkForLazyImages);
 
     exports.refresh = function() {
         lazyNodes = document.querySelectorAll('.lazy');
