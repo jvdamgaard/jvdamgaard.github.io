@@ -1,10 +1,7 @@
 (function(exports, document, window) {
     'use strict';
 
-    var setTransform = function(image) {
-        var offset = (window.scrollY - image.getDocumentOffsetTop()) * 0.75;
-        image.style[transformProperty] = 'translate3d(0, ' + offset + 'px, 0)';
-    };
+    var MAX_SCROLL_FACTOR = 1;
 
     // Get prefixed transform property
     var transformProperty;
@@ -20,25 +17,35 @@
         return;
     }
 
-    var sliderImages = document.querySelectorAll('.img.slider > img');
+    var setTransform = function(imageSlider) {
+        // Point where image hit top of container
+        var fromZeroOffset = window.scrollY - imageSlider.getDocumentOffsetTop();
+
+        // Factor to scroll with
+        var scrollFactor = (imageSlider.clientHeight - imageSlider.img.height) / (imageSlider.clientHeight - window.innerHeight);
+
+        if (scrollFactor > MAX_SCROLL_FACTOR) {
+            scrollFactor = MAX_SCROLL_FACTOR;
+        }
+
+        imageSlider.img.style[transformProperty] = 'translate3d(0, ' + (fromZeroOffset * scrollFactor) + 'px, 0)';
+    };
+
+    var sliderImages = document.querySelectorAll('.img.slider');
     sliderImages = Array.prototype.slice.call(sliderImages);
-    sliderImages.forEach(function(sliderImage) {
-        sliderImage.addEventListener('load', function() {
-            setTransform(sliderImage);
-        });
-    });
 
     var positionImages = function() {
         sliderImages.forEach(setTransform);
     };
 
-    if (sliderImages) {
+    if (sliderImages.length > 0) {
+        sliderImages.forEach(function(sliderImage) {
+            sliderImage.img = sliderImage.querySelector('img');
+            sliderImage.img.addEventListener('load', positionImages);
+        });
         window.addEventListener('scroll', positionImages);
         window.addEventListener('resize', positionImages);
         document.addEventListener('DOMContentLoaded', positionImages);
-        sliderImages.forEach(function(sliderImage) {
-            sliderImage.addEventListener('load', positionImages);
-        });
     }
 
 }(window.App.namespace('helpers.sliderImages'), document, window));
