@@ -1,7 +1,7 @@
 (function(exports, document, window) {
     'use strict';
 
-    var MAX_SCROLL_FACTOR = 1;
+    var MAX_SCROLL_FACTOR = 0.9;
 
     // Get prefixed transform property
     var transformProperty;
