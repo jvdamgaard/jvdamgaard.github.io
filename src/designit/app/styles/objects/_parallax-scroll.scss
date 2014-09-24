@@ -1,17 +1,15 @@
 @include critical {
-    .img.slider {
+    .parallax-scroll {
 
         position: relative;
         overflow: hidden;
         background: transparent !important;
 
-        & > img {
+        .background {
             left: 0;
             top: 0;
             position: absolute;
             z-index: -1;
-            width: 100%;
-            transform: translateZ(0);
         }
     }
 }
