@@ -11,7 +11,7 @@
 
         <link rel="prefetch" href="styles/non-critical.css">
         <link rel="prefetch" href="//polyfill.io/normalize.min.css"> <!-- When ready: <link rel="prefetch" href="//cdn.polyfill.io/v1/normalize.min.css"> -->
-        <link rel="prefetch-dns" href="//cdnjs.cloudflare.com">
+        <link rel="prefetch" href="//cdnjs.cloudflare.com/ajax/libs/picturefill/2.1.0/picturefill.min.js">
 
         <noscript>
             <!-- build:css styles/non-critical.css -->
@@ -31,7 +31,8 @@
                 srcset="https://farm6.staticflickr.com/5590/15135625539_d2c05d3bb7_k_d.jpg 2048w, https://farm6.staticflickr.com/5590/15135625539_d722f03d07_z_d.jpg 640w"
                 sizes="100vw"
                 alt="Slider 1"
-                class="background">
+                onload="this.className=this.className.replace('fade-in','')"
+                class="background animate-opacity fade-in">
             <div class="grid slider-test">
                 <div class="row">
                     <div class="all col">
@@ -255,22 +256,22 @@
         <script src="scripts/inline/load-picturefill.js" inline></script>
         <!-- Delete end -->
 
-        <script src="//cdn.polyfill.io/v1/polyfill.min.js"></script>
+        <script src="//cdn.polyfill.io/v1/polyfill.min.js" defer></script>
 
         <!-- build:js scripts/main.js -->
-        <script src="scripts/extensions/Element.getDocumentOffset.js"></script>
-        <script src="scripts/helpers/feature-test.js"></script>
-        <script src="scripts/helpers/animate.js"></script>
-        <script src="scripts/helpers/lazy-images.js"></script>
-        <script src="scripts/helpers/ajax.js"></script>
-        <script src="scripts/helpers/parallax-scroll.js"></script>
+        <script src="scripts/extensions/Element.getDocumentOffset.js" defer></script>
+        <script src="scripts/helpers/feature-test.js" defer></script>
+        <script src="scripts/helpers/animate.js" defer></script>
+        <script src="scripts/helpers/lazy-images.js" defer></script>
+        <script src="scripts/helpers/ajax.js" defer></script>
+        <script src="scripts/helpers/parallax-scroll.js" defer></script>
         <!-- endbuild -->
 
         <!-- build:js scripts/enhancement.js -->
         <!--<script src="scripts/components/console-message.js"></script>-->
-        <script src="scripts/vendor/google-analytics.js"></script>
-        <script src="bower_components/bugsense/lib/bugsense.js"></script>
-        <script src="scripts/vendor/bugsense.js"></script>
+        <script src="scripts/vendor/google-analytics.js" defer></script>
+        <script src="bower_components/bugsense/lib/bugsense.js" defer></script>
+        <script src="scripts/vendor/bugsense.js" defer></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -11,7 +11,7 @@
 
         <link rel="prefetch" href="styles/non-critical-d41d8cd9.css">
         <link rel="prefetch" href="//polyfill.io/normalize.min.css"> <!-- When ready: <link rel="prefetch" href="//cdn.polyfill.io/v1/normalize.min.css"> -->
-        <link rel="prefetch-dns" href="//cdnjs.cloudflare.com">
+        <link rel="prefetch" href="//cdnjs.cloudflare.com/ajax/libs/picturefill/2.1.0/picturefill.min.js">
 
         <noscript>
             <link rel="stylesheet" href="styles/non-critical-d41d8cd9.css">
@@ -29,7 +29,8 @@
                 srcset="https://farm6.staticflickr.com/5590/15135625539_d2c05d3bb7_k_d.jpg 2048w, https://farm6.staticflickr.com/5590/15135625539_d722f03d07_z_d.jpg 640w"
                 sizes="100vw"
                 alt="Slider 1"
-                class="background">
+                onload="this.className=this.className.replace('fade-in','')"
+                class="background animate-opacity fade-in">
             <div class="grid slider-test">
                 <div class="row">
                     <div class="all col">
@@ -253,10 +254,10 @@
         <script>!function(e){"use strict";if(!("srcset"in e.createElement("img"))){var t=e.createElement("script"),c=e.getElementsByTagName("script")[0];t.async=1,t.src="//cdnjs.cloudflare.com/ajax/libs/picturefill/2.1.0/picturefill.min.js",c.parentNode.insertBefore(t,c)}}(document);</script>
         <!-- Delete end -->
 
-        <script src="//cdn.polyfill.io/v1/polyfill.min.js"></script>
+        <script src="//cdn.polyfill.io/v1/polyfill.min.js" defer></script>
 
-        <script src="scripts/main-c5058030.js"></script>
+        <script src="scripts/main-c5058030.js" defer></script>
 
-        <script src="scripts/enhancement-74d39143.js"></script>
+        <script src="scripts/enhancement-74d39143.js" defer></script>
 </body>
 </html>
