@@ -10,6 +10,10 @@
             top: 0;
             position: absolute;
             z-index: -1;
+
+            &.full-width {
+                width: 100%;
+            }
         }
     }
 }

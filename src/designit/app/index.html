@@ -30,7 +30,7 @@
                 data-srcset="https://farm6.staticflickr.com/5590/15135625539_d2c05d3bb7_k_d.jpg 2048w, https://farm6.staticflickr.com/5590/15135625539_d722f03d07_z_d.jpg 640w"
                 sizes="100vw"
                 alt="Slider 1"
-                class="lazy background responsive">
+                class="lazy background">
             <div class="grid slider-test">
                 <div class="row">
                     <div class="all col">
@@ -45,7 +45,7 @@
                 data-srcset="https://farm6.staticflickr.com/5554/15304147916_515db50da8_h.jpg 1600w, https://farm6.staticflickr.com/5554/15304147916_e880f2231e_b.jpg 1024w, https://farm6.staticflickr.com/5554/15304147916_e880f2231e_c.jpg 800w, https://farm6.staticflickr.com/5554/15304147916_e880f2231e_z.jpg 640w"
                 sizes="100vw"
                 alt="Slider 2"
-                class="lazy background responsive">
+                class="lazy background">
             <div class="grid slider-test">
                 <div class="row">
                     <div class="all col">
@@ -109,7 +109,7 @@
                 data-srcset="https://farm3.staticflickr.com/2944/15139966609_b095b79cd5_h.jpg 1600w, https://farm3.staticflickr.com/2944/15139966609_7978f83b60_b.jpg 1024w, https://farm3.staticflickr.com/2944/15139966609_7978f83b60_c.jpg 800w, https://farm3.staticflickr.com/2944/15139966609_7978f83b60_z.jpg 640w"
                 sizes="100vw"
                 alt="Slider test"
-                class="lazy background responsive">
+                class="lazy background">
             <div class="grid slider-test">
                 <div class="row">
                     <div class="all col">
@@ -176,7 +176,7 @@
                 data-srcset="https://farm4.staticflickr.com/3904/15133130219_a7593de28a_h.jpg 1600w, https://farm4.staticflickr.com/3904/15133130219_40f96cb42d_b.jpg 1024w, https://farm4.staticflickr.com/3904/15133130219_40f96cb42d_c.jpg 800w, https://farm4.staticflickr.com/3904/15133130219_40f96cb42d_z.jpg 600w"
                 sizes="100vw"
                 alt="Slider bear"
-                class="lazy background responsive">
+                class="lazy background">
             <div class="grid">
                 <div class="row">
                     <div class="all col">
@@ -250,10 +250,7 @@
         <!-- Load non-critical css -->
         <script src="scripts/inline/load-non-critical-css.js" inline></script>
 
-        <!-- Delete when Promise and es6 string is supported by cdn.polyfill.io -->
-        <script>_Promise=Promise</script>
-        <script src="//cdn.polyfill.io/v1/polyfill.min.js?features=modernizr:promises,modernizr:promises|always"></script>
-        <script>if(_Promise){Promise=_Promise}</script>
+        <!-- Delete when srcset is supported by cdn.polyfill.io -->
         <script src="scripts/inline/load-picturefill.js" inline></script>
         <!-- Delete end -->
 
@@ -261,7 +258,7 @@
 
         <!-- build:js scripts/main.js -->
         <script src="scripts/extensions/Element.getDocumentOffset.js"></script>
-        <script src="scripts/main.js"></script>
+        <script src="scripts/helpers/feature-test.js"></script>
         <script src="scripts/helpers/animate.js"></script>
         <script src="scripts/helpers/lazy-images.js"></script>
         <script src="scripts/helpers/ajax.js"></script>

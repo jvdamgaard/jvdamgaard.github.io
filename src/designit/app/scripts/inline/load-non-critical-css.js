@@ -3,6 +3,11 @@
 
 (function(hrefs, document, i) {
     'use strict';
+    var setMediaAll = function(stylesheet) {
+        setTimeout(function() {
+            stylesheet.media = 'all';
+        });
+    };
     for (i = 0; i < hrefs.length; i++) {
         var href = hrefs[i];
         var stylesheet = document.createElement('link');
@@ -11,9 +16,7 @@
         stylesheet.href = href;
         stylesheet.media = 'only x';
         ref.parentNode.insertBefore(stylesheet, ref);
-        setTimeout(function() {
-            stylesheet.media = 'all';
-        });
+        setMediaAll(stylesheet);
     }
 
 }(['styles/non-critical.css', '//polyfill.io/normalize.min.css'], window.document));

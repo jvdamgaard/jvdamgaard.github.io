@@ -1,4 +1,8 @@
-(function(exports, Promise, XMLHttpRequest) {
+(function(root, factory) {
+    'use strict';
+    root.App = root.App || {};
+    factory((root.App.ajax = {}), root.Promise, root.XMLHttpRequest);
+}(this, function(exports, Promise, XMLHttpRequest) {
     'use strict';
 
     exports.ajax = function(options) {
@@ -61,5 +65,4 @@
         options.method = 'POST';
         return exports.ajax(options);
     };
-
-}(window.App.namespace('helpers.ajax'), window.Promise, window.XMLHttpRequest));
+}));

@@ -1,8 +1,13 @@
-(function(exports, window) {
+(function(root, factory) {
+    'use strict';
+
+    root.App = root.App || {};
+    factory((root.App.lazyImages = {}));
+}(this, function(exports) {
     'use strict';
 
     // Percent under bottom of screen images i loaded
-    var OFFSET_PERCENT = 0;
+    var OFFSET_PERCENT = 1;
 
     var queued = false;
     var lazyNodes;
@@ -79,5 +84,4 @@
         lazyNodes = document.querySelectorAll('.lazy');
         lazyNodes = Array.prototype.slice.call(lazyNodes);
     };
-
-}(window.App.namespace('helpers.lazyImages'), window));
+}));

@@ -1,4 +1,8 @@
-(function(exports, window) {
+(function(root, factory) {
+    'use strict';
+    root.App = root.App || {};
+    factory((root.App.animate = {}));
+}(this, function(exports) {
     'use strict';
 
     // Percent before bottom that scroll is activated
@@ -55,5 +59,4 @@
         animateNodes = document.querySelectorAll('.animate');
         animateNodes = Array.prototype.slice.call(animateNodes);
     };
-
-}(window.App.namespace('helpers.animate'), window));
+}));
