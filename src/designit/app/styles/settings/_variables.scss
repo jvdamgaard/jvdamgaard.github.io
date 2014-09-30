@@ -1,7 +1,52 @@
-// Colors
-$gray-light: #eee;
-$gray: #ccc;
-$gray-dark: #aaa;
+/**
+ * COLROS
+ */
+
+// Theme 1
+$color-vitamin-c: #ff9900;
+$color-route-66: #424242;
+$color-steady-grey: #e9e9e9;
+$color-bc: #bcbcbc;
+$color-gamebookers-blue: #3299bb;
+$color-black: #090909;
+$color-white: #ffffff;
+
+$color-text: $color-black;
+$color-text-negative: $color-white;
+$color-background: $color-white;
+$color-background-negative: $color-black;
+
+$color-primary: $color-vitamin-c;
+$color-secondary: $color-vitamin-c;
+
+$color-grey: $color-bc;
+$color-grey-light: $color-steady-grey;
+$color-grey-dark: $color-route-66;
+
+/**
+ * TYPOGRAPHY
+ */
+$font-size-base: 18px;
+
+$font-size-ratio: 1.27201964951;
+
+$font-size-small: $font-size-base / $font-size-ratio;
+$font-size-large: $font-size-base * $font-size-ratio;
+
+$heading-size-5: $font-size-base;
+$heading-size-4: $heading-size-5 * $font-size-ratio;
+$heading-size-3: $heading-size-4 * $font-size-ratio;
+$heading-size-2: $heading-size-3 * $font-size-ratio;
+$heading-size-1: $heading-size-2 * $font-size-ratio;
+
+$line-height: 30/18;
+$line-height-base: $line-height * $font-size-base;
+$font-text: "Georgia Pro", georgia, serif;
+$font-heading: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+/**
+ * RESPOSIVE
+ */
 
 // Breakpoints
 $break-sm: 600px;

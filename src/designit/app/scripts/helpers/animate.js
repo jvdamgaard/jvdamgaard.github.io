@@ -6,8 +6,8 @@
     'use strict';
 
     // Percent before bottom that scroll is activated
-    var OFFSET_PERCENT = 0.2;
-    var ANIMATE_CLASSES = 'up fade-in'.split(' ');
+    var OFFSET_PERCENT = 0.35;
+    var ANIMATE_CLASSES = 'up fade-in left'.split(' ');
 
     var queued = false;
     var animateNodes;

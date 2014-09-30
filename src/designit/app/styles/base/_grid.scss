@@ -1,4 +1,4 @@
-@include critical() {
+@include critical {
 
     .grid {
         margin: 0 auto;
@@ -41,6 +41,16 @@
         &.eleven { width: 100% / 12 * 11; }
         &.twelve { width: 100% / 12 * 12; }
         &.all    { width: 100% / 12 * 12; }
+    }
+
+    .clearfix {
+        &:before, &:after {
+            content: " ";
+            display: table;
+        }
+        &:after {
+            clear: both;
+        }
     }
 
     @include media(sm) {

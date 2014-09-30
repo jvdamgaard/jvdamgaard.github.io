@@ -1,0 +1,46 @@
+@include critical {
+
+    body {
+        padding-top: floor(($line-height-base * 2) + ($font-size-small * $line-height));
+    }
+
+    .top-navigation {
+        padding: 0 $grid-padding/2;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 3;
+        background-color: #fff;
+        background-color: rgba(#fff, 0.9);
+        transform: translateZ(0);
+        border-bottom: 1px solid $color-grey-light;
+
+        .links {
+            a {
+                padding: $line-height-base $grid-padding/2;
+                display: block;
+                float: left;
+                color: $color-text;
+                text-decoration: none;
+                text-transform: uppercase;
+                font-family: $font-heading;
+                font-size: $font-size-small;
+                font-weight: bold;
+                border-bottom: 0px solid $color-primary;
+                &:hover {
+                    text-decoration: underline;
+                }
+                &.active {
+                    border-bottom-width: 6px;
+                    margin-bottom: -6px;
+                }
+            }
+        }
+
+        &.small .links a {
+            padding-top: $grid-padding/4;
+            padding-bottom: $grid-padding/4;
+        }
+    }
+}

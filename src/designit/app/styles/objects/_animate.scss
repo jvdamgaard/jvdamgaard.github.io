@@ -4,6 +4,10 @@
             transform: translate3d(0,0,0);
             transition: all 0.6s ease-out 0s;
 
+            &.fast {
+                transition-duration: 0.2s;
+            }
+
             &.up {
                 transform: translate3d(0,40px,0);
                 opacity: 0;

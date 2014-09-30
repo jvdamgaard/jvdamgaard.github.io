@@ -24,7 +24,13 @@
     </head>
     <body>
 
-        <header style="background:#000;height: 50px;"></header>
+        <nav class="clearfix top-navigation">
+            <div class="links">
+                <a href="#" class="active animate fast">Who am I</a>
+                <a href="#" class="animate fast">What do I Love</a>
+                <a href="#" class="animate fast">Why Employ Me</a>
+            </div>
+        </nav>
         <section class="parallax-scroll">
             <img
                 src="https://farm6.staticflickr.com/5590/15135625539_d722f03d07_z_d.jpg"
@@ -265,10 +271,11 @@
         <script src="scripts/helpers/lazy-images.js" defer></script>
         <script src="scripts/helpers/ajax.js" defer></script>
         <script src="scripts/helpers/parallax-scroll.js" defer></script>
+        <script src="scripts/components/top-navigation.js" defer></script>
         <!-- endbuild -->
 
         <!-- build:js scripts/enhancement.js -->
-        <!--<script src="scripts/components/console-message.js"></script>-->
+        <script src="scripts/components/console-message.js"></script>
         <script src="scripts/vendor/google-analytics.js" defer></script>
         <script src="bower_components/bugsense/lib/bugsense.js" defer></script>
         <script src="scripts/vendor/bugsense.js" defer></script>
