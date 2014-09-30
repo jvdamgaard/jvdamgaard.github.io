@@ -61,6 +61,7 @@
 
         parallaxNodes.forEach(function(parallaxNode) {
             var minHeight;
+            var offset;
 
             if (featureTest.touch) {
                 minHeight = parallaxNode.clientHeight;
@@ -78,11 +79,16 @@
 
             if (windowRatio < backgroundRatio) {
                 parallaxNode.backgroundElement.classList.remove('full-width');
-                parallaxNode.backgroundElement.style.height = minHeight + 'px';
+                parallaxNode.backgroundElement.classList.remove('full-width');
+                offset = ((parallaxNode.backgroundElement.width - window.innerWidth) / 2);
+                parallaxNode.backgroundElement.style.marginLeft = '-' + offset + 'px';
+                parallaxNode.backgroundElement.style.marginTop = '0px';
             } else {
                 parallaxNode.backgroundElement.classList.add('full-width');
                 parallaxNode.backgroundElement.style.height = 'auto';
-                // TODO: Center align image using negative margin-top
+                offset = ((parallaxNode.backgroundElement.height - minHeight) / 2);
+                parallaxNode.backgroundElement.style.marginTop = '-' + offset + 'px';
+                parallaxNode.backgroundElement.style.marginLeft = '0px';
             }
         });
     };

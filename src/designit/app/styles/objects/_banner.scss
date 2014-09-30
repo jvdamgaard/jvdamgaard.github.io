@@ -1,7 +1,7 @@
 @include critical {
     .banner {
         padding-top: 50%;
-        @include media(md) {
+        @include media(lg) {
             padding-top: 500px;
         }
     }
