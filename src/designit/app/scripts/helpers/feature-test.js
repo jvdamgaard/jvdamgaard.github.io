@@ -1,3 +1,5 @@
+/* global DocumentTouch */
+
 (function(root, factory) {
     'use strict';
     root.App = root.App || {};

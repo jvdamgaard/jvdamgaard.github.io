@@ -10,9 +10,6 @@ var $ = require('gulp-load-plugins')();
 
 gulp.task('styles', function() {
     return gulp.src(['app/styles/critical.scss', 'app/styles/non-critical.scss'])
-        .pipe($.plumber({
-            errorHandler: $.notify.onError('Error: <%= error.message %>')
-        }))
         .pipe($.rubySass({
             style: 'expanded',
             precision: 10
@@ -26,16 +23,9 @@ gulp.task('styles', function() {
 
 gulp.task('scripts', function() {
     return gulp.src('app/scripts/**/*.js')
-        .pipe($.plumber({
-            errorHandler: $.notify.onError('Error: <%= error.message %>')
-        }))
         .pipe($.jshint())
         .pipe($.jshint.reporter(require('jshint-stylish')))
-        .pipe($.size())
-        .on('error', $.notify.onError({
-            message: 'Error: <%= error.message %>',
-            title: 'Error running something'
-        }));
+        .pipe($.size());
 });
 
 gulp.task('html', ['styles', 'scripts'], function() {
@@ -64,20 +54,13 @@ gulp.task('html', ['styles', 'scripts'], function() {
 
 gulp.task('images', function() {
     return gulp.src('app/images/**/*')
-        .pipe($.plumber({
-            errorHandler: $.notify.onError('Error: <%= error.message %>')
-        }))
         .pipe($.cache($.imagemin({
             optimizationLevel: 3,
             progressive: true,
             interlaced: true
         })))
         .pipe(gulp.dest(DIST + '/images'))
-        .pipe($.size())
-        .on('error', $.notify.onError({
-            message: 'Error: <%= error.message %>',
-            title: 'Error running something'
-        }));
+        .pipe($.size());
 });
 
 gulp.task('extras', function() {
