@@ -6,8 +6,8 @@
 }(this, function(exports) {
     'use strict';
 
-    // Percent under bottom of screen images i loaded
-    var OFFSET_PERCENT = 1;
+    // Percent under bottom of screen images is loaded
+    var OFFSET_PERCENT = 1.5;
 
     var queued = false;
     var lazyNodes;
