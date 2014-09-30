@@ -1,0 +1,9 @@
+@include critical {
+    .banner {
+        padding-top: 50%;
+        @include media(md) {
+            padding-top: 500px;
+        }
+    }
+}
+

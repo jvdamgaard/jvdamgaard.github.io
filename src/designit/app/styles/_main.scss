@@ -13,12 +13,13 @@
 @import "base/typography";
 
 // Helpers
+@import "helpers/animate";
+@import "helpers/responsive";
+@import "helpers/lazy";
 
 // Objects
-@import "objects/animate";
-@import "objects/responsive";
-@import "objects/lazy";
 @import "objects/parallax-scroll";
+@import "objects/banner";
 
 // Components
 @import "components/top-navigation";

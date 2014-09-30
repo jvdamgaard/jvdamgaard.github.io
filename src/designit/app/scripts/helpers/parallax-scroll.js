@@ -10,12 +10,12 @@
     // Make sure that the image is scrolling up. A factor of 1 would imply in
     // a static image. A factor above 1 would imply that the image would scroll
     // in the opposite direction of the document
-    var MAX_SCROLL_FACTOR = 0.9;
+    var MAX_SCROLL_FACTOR = 0.75;
 
     // Make sure that the image is scrolling slower that the document.
     // A factor of 0 would imply no scroll effect.
     // A factor under 0 would imply a fastre scroll than the document.
-    var MIN_SCROLL_FACTOR = 0.1;
+    var MIN_SCROLL_FACTOR = 0.25;
 
     var parallaxNodes = document.querySelectorAll('.parallax-scroll');
     parallaxNodes = Array.prototype.slice.call(parallaxNodes);
@@ -82,6 +82,7 @@
             } else {
                 parallaxNode.backgroundElement.classList.add('full-width');
                 parallaxNode.backgroundElement.style.height = 'auto';
+                // TODO: Center align image using negative margin-top
             }
         });
     };

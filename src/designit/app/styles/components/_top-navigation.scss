@@ -33,14 +33,18 @@
                 }
                 &.active {
                     border-bottom-width: 6px;
-                    margin-bottom: -6px;
+                    margin-bottom: -1px;
+                    padding-bottom: ($line-height-base - 5px);
                 }
             }
         }
 
         &.small .links a {
-            padding-top: $grid-padding/4;
-            padding-bottom: $grid-padding/4;
+            padding-top: $line-height-base/4;
+            padding-bottom: $line-height-base/4;
+                &.active {
+                    padding-bottom: ($line-height-base/4 - 5px);
+                }
         }
     }
 }
