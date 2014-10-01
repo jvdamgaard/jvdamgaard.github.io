@@ -1,7 +1,7 @@
 @include critical {
 
     body {
-        padding-top: floor(($line-height-base * 2) + ($font-size-small * $line-height));
+        padding-top: ($font-size-smallest * $line-height * 3);
     }
 
     .top-navigation {
@@ -18,14 +18,14 @@
 
         .links {
             a {
-                padding: $line-height-base $grid-padding/2;
+                padding: ($line-height * $font-size-smallest) $grid-padding/2;
                 display: block;
                 float: left;
                 color: $color-text;
                 text-decoration: none;
                 text-transform: uppercase;
                 font-family: $font-heading;
-                font-size: $font-size-small;
+                font-size: $font-size-smallest;
                 font-weight: bold;
                 border-bottom: 0px solid $color-primary;
                 &:hover {
@@ -34,16 +34,16 @@
                 &.active {
                     border-bottom-width: 6px;
                     margin-bottom: -1px;
-                    padding-bottom: ($line-height-base - 5px);
+                    padding-bottom: (($line-height * $font-size-smallest) - 5px);
                 }
             }
         }
 
         &.small .links a {
-            padding-top: $line-height-base/4;
-            padding-bottom: $line-height-base/4;
+            padding-top: ($line-height * $font-size-smallest)/4;
+            padding-bottom: ($line-height * $font-size-smallest)/4;
                 &.active {
-                    padding-bottom: ($line-height-base/4 - 5px);
+                    padding-bottom: (($line-height * $font-size-smallest)/4 - 5px);
                 }
         }
     }

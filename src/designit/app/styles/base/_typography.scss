@@ -2,33 +2,70 @@
     body {
         color: $color-text;
         background-color: $color-background;
-        font-size: $font-size-base;
+        font-size: $font-size-small;
         line-height: $line-height;
         font-family: $font-text;
     }
 
-    small, .small {
-        font-size: $font-size-small;
+    h1, .h1 {
+        font-family: $font-heading;
+        font-weight: bold;
+        font-size: $font-size-hugest;
+        line-height: 0.9;
+        margin: ($line-height * $font-size-small * 2) 0 $line-height * $font-size-small;
     }
 
-    h1, .h1 {
-        font-size: $heading-size-1;
+    p {
+        margin: $line-height * $font-size-small 0;
+    }
+
+    a {
+        color: $color-secondary;
+        &:hover {
+            color: $color-primary;
+        }
+    }
+
+    .summary {
+        font-size: $font-size-normal;
+    }
+}
+
+@include non-critical {
+    ul, ol {
+        margin: ($line-height * $font-size-small) 0;
+        padding-left: $grid-padding;
+    }
+
+    // No margins in nested lists
+    ul ul, ol ol {
+        margin: 0;
+    }
+
+    small, .small {
+        font-size: $font-size-smaller;
+    }
+
+    h2, h3, h4, h5, .h2, .h3, .h4, .h5 {
         font-family: $font-heading;
+        font-weight: bold;
+        margin: ($line-height * $font-size-small * 2) 0 ($line-height * $font-size-small);
     }
     h2, .h2 {
-        font-size: $heading-size-2;
-        font-weight: bold;
+        font-size: $font-size-larger;
+        line-height: 1;
     }
     h3, .h3 {
-        font-size: $heading-size-3;
-        font-weight: bold;
+        font-size: $font-size-large;
+        line-height: 1.1;
     }
     h4, .h4 {
-        font-size: $heading-size-4;
-        font-weight: bold;
+        font-size: $font-size-normal;
+        line-height: 1.2;
     }
     h5, .h5 {
-        font-size: $heading-size-5;
-        font-weight: bold;
+        font-size: $font-size-small;
+        line-height: 1.3;
     }
+
 }

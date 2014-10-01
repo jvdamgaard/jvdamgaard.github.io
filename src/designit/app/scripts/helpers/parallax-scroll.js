@@ -72,14 +72,14 @@
                     visibleContainerHeight = window.innerHeight;
                 }
 
-                minHeight = visibleContainerHeight + (parallaxNode.clientHeight * MIN_SCROLL_FACTOR);
+                minHeight = visibleContainerHeight + (window.innerHeight * MIN_SCROLL_FACTOR);
             }
             var windowRatio = window.innerWidth / minHeight;
             var backgroundRatio = parallaxNode.backgroundElement.width / parallaxNode.backgroundElement.height;
 
             if (windowRatio < backgroundRatio) {
                 parallaxNode.backgroundElement.classList.remove('full-width');
-                parallaxNode.backgroundElement.classList.remove('full-width');
+                parallaxNode.backgroundElement.style.height = minHeight + 'px';
                 offset = ((parallaxNode.backgroundElement.width - window.innerWidth) / 2);
                 parallaxNode.backgroundElement.style.marginLeft = '-' + offset + 'px';
                 parallaxNode.backgroundElement.style.marginTop = '0px';

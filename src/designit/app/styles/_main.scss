@@ -1,11 +1,12 @@
+// Tools
+@import "tools/critical";
+@import "tools/media";
+@import "tools/math";
+
 // Settings
 @import "settings/variables";
 
 // Vendors
-
-// Tools
-@import "tools/critical";
-@import "tools/media";
 
 // Base
 @import "base/reset";
