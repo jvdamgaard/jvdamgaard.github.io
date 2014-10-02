@@ -25,7 +25,8 @@
     };
 
     var loadImgSrc = function(img) {
-        img.classList.add('animate-opacity');
+        img.classList.add('animate');
+        img.classList.add('opacity');
         img.classList.add('fade-in');
         img.addEventListener('load', function() {
             img.classList.remove('fade-in');
