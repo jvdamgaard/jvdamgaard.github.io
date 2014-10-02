@@ -12,7 +12,7 @@ gulp.task('styles', function() {
     return gulp.src(['app/styles/critical.scss', 'app/styles/non-critical.scss'])
         .pipe($.rubySass({
             style: 'expanded',
-            precision: 10
+            precision: 4
         }))
         .pipe($.autoprefixer('last 1 version'))
         .pipe($.combineMediaQueries())
