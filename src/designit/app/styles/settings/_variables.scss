@@ -24,28 +24,6 @@ $color-grey-light: $color-steady-grey;
 $color-grey-dark: $color-route-66;
 
 /**
- * TYPOGRAPHY
- */
-$font-size-base: 18px;
-
-$font-size-ratio: 1.27201964951;
-
-$font-size-smallest: $font-size-base * power($font-size-ratio, -1);
-$font-size-smaller: $font-size-base;
-$font-size-small: $font-size-base * $font-size-ratio;
-$font-size-normal: $font-size-base * power($font-size-ratio, 2);
-$font-size-large: $font-size-base * power($font-size-ratio, 3);
-$font-size-larger: $font-size-base * power($font-size-ratio, 4);
-$font-size-largest: $font-size-base * power($font-size-ratio, 5);
-$font-size-huge: $font-size-base * power($font-size-ratio, 6);
-$font-size-huger: $font-size-base * power($font-size-ratio, 7);
-$font-size-hugest: $font-size-base * power($font-size-ratio, 8);
-
-$line-height: 30/18;
-$font-text: "Georgia Pro", georgia, serif;
-$font-heading: "Helvetica Neue", Helvetica, Arial, sans-serif;
-
-/**
  * RESPOSIVE
  */
 
@@ -56,3 +34,32 @@ $break-lg: 1000px;
 
 // Grid
 $grid-padding: 30px;
+
+/**
+ * TYPOGRAPHY
+ */
+$font-size-base: 18px;
+
+$ratio: 1.27201964951;
+
+$line-height: $grid-padding/$font-size-base;
+$font-text: "Georgia Pro", georgia, serif;
+$font-heading: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+$font-size-phone: $font-size-base;
+$font-size-desktop: $font-size-base * $ratio;
+
+// Helper sizes
+
+$font-size-smaller: 1rem / power($ratio, 2);
+$font-size-small: 1rem / $ratio;
+$font-size-normal: 1rem;
+$font-size-large: 1rem * $ratio;
+$font-size-larger: 1rem * power($ratio, 2);
+$font-size-largest: 1rem * power($ratio, 3);
+$font-size-huge: 1rem * power($ratio, 4);
+$font-size-huger: 1rem * power($ratio, 5);
+$font-size-hugest: 1rem * power($ratio, 6);
+$font-size-jumbo: 1rem * power($ratio, 7);
+
+

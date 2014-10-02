@@ -9,12 +9,11 @@
     'use strict';
 
     var $topNavigation = document.querySelector('.top-navigation');
-    var topNavigationHeight = $topNavigation.clientHeight;
 
     var lastPos = 0;
 
     var setSizeOfNavigation = function() {
-        if (window.scrollY < topNavigationHeight || window.scrollY < lastPos) {
+        if (window.scrollY < $topNavigation.clientHeight || window.scrollY < lastPos) {
             $topNavigation.classList.remove('small');
         } else {
             $topNavigation.classList.add('small');

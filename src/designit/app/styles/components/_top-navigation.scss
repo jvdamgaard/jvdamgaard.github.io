@@ -1,50 +1,70 @@
 @include critical {
 
     body {
-        padding-top: ($font-size-smallest * $line-height * 3);
+        padding-top: 62px;
     }
 
     .top-navigation {
-        padding: 0 $grid-padding/2;
+        padding: 0 $grid-padding/4;
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         z-index: 3;
         background-color: #fff;
-        background-color: rgba(#fff, 0.9);
+        background-color: rgba(#fff, 0.95);
         transform: translateZ(0);
         border-bottom: 1px solid $color-grey-light;
 
         .links {
             a {
-                padding: ($line-height * $font-size-smallest) $grid-padding/2;
+                padding: 2em $grid-padding/4;
                 display: block;
                 float: left;
                 color: $color-text;
                 text-decoration: none;
                 text-transform: uppercase;
                 font-family: $font-heading;
-                font-size: $font-size-smallest;
+                font-size: $font-size-smaller;
                 font-weight: bold;
                 border-bottom: 0px solid $color-primary;
                 &:hover {
                     text-decoration: underline;
                 }
                 &.active {
-                    border-bottom-width: 6px;
+                    border-bottom-width: .5em;
                     margin-bottom: -1px;
-                    padding-bottom: (($line-height * $font-size-smallest) - 5px);
+                    padding-bottom: 1.5em;
                 }
             }
         }
+    }
 
-        &.small .links a {
-            padding-top: ($line-height * $font-size-smallest)/4;
-            padding-bottom: ($line-height * $font-size-smallest)/4;
-                &.active {
-                    padding-bottom: (($line-height * $font-size-smallest)/4 - 5px);
-                }
+    @include media(sm) {
+        body {
+            padding-top: 80px;
+        }
+        .top-navigation {
+            padding: 0 $grid-padding/2;
+            .links a {
+                padding: 2em $grid-padding/2;
+                font-size: $font-size-small;
+            }
         }
     }
+
+    @include media(lg) {
+        body {
+            padding-top: 102px;
+        }
+    }
+}
+
+@include non-critical {
+
+    .top-navigation.small .links a {
+        padding-top: .5em;
+        padding-bottom: .5em;
+    }
+
 }
