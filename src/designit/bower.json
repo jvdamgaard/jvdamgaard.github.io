@@ -2,7 +2,8 @@
     "name": "designit",
     "private": true,
     "dependencies": {
-        "bugsense": "~2.1.0"
+        "bugsense": "~2.1.0",
+        "picturefill": "~2.1.0"
     },
     "devDependencies": {}
 }

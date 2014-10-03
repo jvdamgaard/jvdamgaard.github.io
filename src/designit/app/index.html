@@ -10,13 +10,15 @@
 
         <link rel="prefetch" href="styles/non-critical.css">
         <link rel="prefetch" href="//polyfill.io/normalize.min.css"> <!-- When ready: <link rel="prefetch" href="//cdn.polyfill.io/v1/normalize.min.css"> -->
-        <link rel="prefetch" href="//cdnjs.cloudflare.com/ajax/libs/picturefill/2.1.0/picturefill.min.js">
 
         <noscript>
             <!-- build:css styles/non-critical.css -->
             <link rel="stylesheet" href="styles/non-critical.css">
             <!-- endbuild -->
         </noscript>
+
+        <!-- Load picturefill if responsive images is not supported -->
+        <script src="scripts/inline/load-picturefill.js" inline></script>
 
         <!-- Set html class to `js` -->
         <script src="scripts/inline/javascript-active.js" inline></script>
@@ -36,9 +38,13 @@
         </nav>
         <section class="parallax-scroll banner">
             <img
+                srcset="images/banners/test-slide-1-320x320.jpg 320w, images/banners/test-slide-1-500x500.jpg 500w, images/banners/test-slide-1-640x640.jpg 640w, images/banners/test-slide-1-750x750.jpg 750w, images/banners/test-slide-1-1000x1000.jpg 1000w, images/banners/test-slide-1-1500x1000.jpg 1500w, images/banners/test-slide-1-2000x1333.jpg 2000w"
+                alt="Trigger download of image"
+                style="height:0!important">
+            <img
                 data-srcset="images/banners/test-slide-1-320x320.jpg 320w, images/banners/test-slide-1-500x500.jpg 500w, images/banners/test-slide-1-640x640.jpg 640w, images/banners/test-slide-1-750x750.jpg 750w, images/banners/test-slide-1-1000x1000.jpg 1000w, images/banners/test-slide-1-1500x1000.jpg 1500w, images/banners/test-slide-1-2000x1333.jpg 2000w"
                 alt="Slider 1"
-                class="lazy background">
+                class="background lazy fast">
         </section>
         <section>
             <div class="grid">
@@ -309,10 +315,6 @@
 
         <!-- Load non-critical css -->
         <script src="scripts/inline/load-non-critical-css.js" inline></script>
-
-        <!-- Delete when srcset is supported by cdn.polyfill.io -->
-        <script src="scripts/inline/load-picturefill.js" inline></script>
-        <!-- Delete end -->
 
         <script src="//cdn.polyfill.io/v1/polyfill.min.js" defer></script>
 
