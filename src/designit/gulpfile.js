@@ -71,13 +71,21 @@ gulp.task('extras', function() {
         .pipe(gulp.dest(DIST));
 });
 
+gulp.task('more-extras', function() {
+    return gulp
+        .src(['app/bower_components/picturefill/dist/picturefill.min.js'], {
+            dot: true
+        })
+        .pipe(gulp.dest(DIST + '/bower_components/picturefill/dist/'));
+});
+
 gulp.task('clean', function() {
     return gulp.src(['.tmp', DIST], {
         read: false
     }).pipe($.clean());
 });
 
-gulp.task('build', ['html', 'images', 'extras']);
+gulp.task('build', ['html', 'images', 'extras', 'more-extras']);
 
 gulp.task('deploy', ['clean'], function() {
     gulp.start('build');
