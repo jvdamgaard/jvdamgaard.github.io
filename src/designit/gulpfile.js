@@ -48,6 +48,7 @@ gulp.task('html', ['styles', 'scripts'], function() {
         .pipe($.useref.restore())
         .pipe($.useref())
         .pipe($.revReplace())
+        .pipe($.minifyHtml())
         .pipe(gulp.dest(DIST))
         .pipe($.size());
 });
