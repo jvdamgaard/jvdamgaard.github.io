@@ -10,11 +10,13 @@
 
         <link rel="prefetch" href="styles/non-critical-09d46004.css">
         <link rel="prefetch" href="//polyfill.io/normalize.min.css"> <!-- When ready: <link rel="prefetch" href="//cdn.polyfill.io/v1/normalize.min.css"> -->
-        <link rel="prefetch" href="//cdnjs.cloudflare.com/ajax/libs/picturefill/2.1.0/picturefill.min.js">
 
         <noscript>
             <link rel="stylesheet" href="styles/non-critical-09d46004.css">
         </noscript>
+
+        <!-- Load picturefill if responsive images is not supported -->
+        <script>!function(e){"use strict";if(!window.HTMLPictureElement){var t=e.createElement("script"),i=e.getElementsByTagName("script")[0];t.async=1,t.src="bower_components/picturefill/dist/picturefill.min.js",i.parentNode.insertBefore(t,i)}}(document);</script>
 
         <!-- Set html class to `js` -->
         <script>!function(e,c){"use strict";e[c]=e[c].replace("no-js","js")}(document.documentElement,"className");</script>
@@ -34,9 +36,13 @@
         </nav>
         <section class="parallax-scroll banner">
             <img
+                srcset="images/banners/test-slide-1-320x320.jpg 320w, images/banners/test-slide-1-500x500.jpg 500w, images/banners/test-slide-1-640x640.jpg 640w, images/banners/test-slide-1-750x750.jpg 750w, images/banners/test-slide-1-1000x1000.jpg 1000w, images/banners/test-slide-1-1500x1000.jpg 1500w, images/banners/test-slide-1-2000x1333.jpg 2000w"
+                alt="Trigger download of image"
+                style="height:0!important">
+            <img
                 data-srcset="images/banners/test-slide-1-320x320.jpg 320w, images/banners/test-slide-1-500x500.jpg 500w, images/banners/test-slide-1-640x640.jpg 640w, images/banners/test-slide-1-750x750.jpg 750w, images/banners/test-slide-1-1000x1000.jpg 1000w, images/banners/test-slide-1-1500x1000.jpg 1500w, images/banners/test-slide-1-2000x1333.jpg 2000w"
                 alt="Slider 1"
-                class="lazy background">
+                class="background lazy fast">
         </section>
         <section>
             <div class="grid">
@@ -307,10 +313,6 @@
 
         <!-- Load non-critical css -->
         <script>!function(e,t,n){"use strict";var i=function(e){setTimeout(function(){e.media="all"})};for(n=0;n<e.length;n++){var l=e[n],o=t.createElement("link"),s=t.getElementsByTagName("script")[0];o.rel="stylesheet",o.href=l,o.media="only x",s.parentNode.insertBefore(o,s),i(o)}}(["styles/non-critical-09d46004.css","//polyfill.io/normalize.min.css"],window.document);</script>
-
-        <!-- Delete when srcset is supported by cdn.polyfill.io -->
-        <script>!function(e){"use strict";if(!("srcset"in e.createElement("img"))){var t=e.createElement("script"),c=e.getElementsByTagName("script")[0];t.async=1,t.src="//cdnjs.cloudflare.com/ajax/libs/picturefill/2.1.0/picturefill.min.js",c.parentNode.insertBefore(t,c)}}(document);</script>
-        <!-- Delete end -->
 
         <script src="//cdn.polyfill.io/v1/polyfill.min.js" defer></script>
 
