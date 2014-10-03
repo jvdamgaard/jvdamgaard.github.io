@@ -51,5 +51,5 @@
 
     console.error('This is just an error to get your attention :-)');
     console.log(message.join('\n'));
-    console.log('%cgoto(\'home\')', 'font-weight:bold;');
+    console.log('%cgoto("home")', 'font-weight:bold;');
 }));

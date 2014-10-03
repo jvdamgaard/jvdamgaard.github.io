@@ -31,6 +31,7 @@ gulp.task('scripts', function() {
 gulp.task('html', ['styles', 'scripts'], function() {
     var jsFilter = $.filter('**/*.js');
     var cssFilter = $.filter('**/*.css');
+    var htmlFilter = $.filter('**/*.html');
 
     return gulp.src('app/*.html')
         .pipe($.inlineSource('./app'))
@@ -48,7 +49,9 @@ gulp.task('html', ['styles', 'scripts'], function() {
         .pipe($.useref.restore())
         .pipe($.useref())
         .pipe($.revReplace())
+        .pipe(htmlFilter)
         .pipe($.minifyHtml())
+        .pipe(htmlFilter.restore())
         .pipe(gulp.dest(DIST))
         .pipe($.size());
 });

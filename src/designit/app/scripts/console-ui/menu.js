@@ -13,7 +13,7 @@
     exports.render = function() {
         console.group('Menu');
         MENU.split(' ').forEach(function(menuItem) {
-            console.log('goto(\'' + menuItem + '\')');
+            console.log('goto("' + menuItem + '")');
         });
         console.groupEnd();
     };

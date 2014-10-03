@@ -1,4 +1,3 @@
-// Universal Module Definition from https://github.com/umdjs/umd/blob/master/commonjsStrict.js
 (function(root, factory) {
     'use strict';
 
