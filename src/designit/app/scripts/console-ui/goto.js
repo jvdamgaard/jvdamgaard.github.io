@@ -20,7 +20,7 @@
         };
         script.onerror = function() {
             console.clear();
-            console.log('%cgoto("' + page + '")', 'font-weight:bold;', 'was not found. Try with one of the following:');
+            console.error('%cgoto("' + page + '")', 'font-weight:bold;', 'was not found. Try with one of the following:');
             window.goto('menu');
         };
     };

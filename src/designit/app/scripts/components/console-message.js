@@ -14,6 +14,9 @@
  *
  * Anyway if you are reading this comment the idea would properly would have
  * worked :-)
+ *
+ * So instead I decided to make an enhanced experience if you accidentally
+ * stumpoled upon this console UI thing.
  */
 
 (function(root, factory) {
@@ -24,6 +27,7 @@
     if (!console) {
         return;
     }
+    console.error('This is just an error to get your attention :-)');
     var message = [
         '#############################################################################################',
         '                            __',
@@ -45,11 +49,9 @@
         'Want to see how this has been build. Visit the source code on github: ',
         'https://github.com/jvdamgaard/jvdamgaard.github.io/tree/master/src/designit',
         '',
-        'Or perhaps yo uwant to explore an alternative UI!',
-        'Simply start the alternative UI from the console with:'
+        'Or perhaps you want to explore an alternative UI!',
+        'Simply start it from the console with:'
     ];
-
-    console.error('This is just an error to get your attention :-)');
     console.log(message.join('\n'));
     console.log('%cgoto("home")', 'font-weight:bold;');
 }));
