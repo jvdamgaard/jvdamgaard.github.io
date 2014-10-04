@@ -14,7 +14,7 @@ gulp.task('styles', function() {
             style: 'expanded',
             precision: 4
         }))
-        .pipe($.autoprefixer('last 1 version'))
+        .pipe($.autoprefixer())
         .pipe($.combineMediaQueries())
         .pipe(gulp.dest('.tmp/styles'))
         .pipe(gulp.dest('app/styles/inline'))
@@ -29,29 +29,21 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('html', ['styles', 'scripts'], function() {
-    var jsFilter = $.filter('**/*.js');
-    var cssFilter = $.filter('**/*.css');
-    var htmlFilter = $.filter('**/*.html');
+    var assets = $.useref.assets({
+        searchPath: ['.tmp', 'app']
+    });
 
     return gulp.src('app/*.html')
         .pipe($.inlineSource('./app'))
-        .pipe($.useref.assets({
-            searchPath: '{.tmp,app}'
-        }))
-        .pipe(jsFilter)
-        .pipe($.uglify())
-        .pipe(jsFilter.restore())
-        .pipe(cssFilter)
-        .pipe($.csso())
-        .pipe(cssFilter.restore())
+        .pipe(assets)
+        .pipe($.if('*.js', $.uglify()))
+        .pipe($.if('*.css', $.csso()))
         .pipe(gulp.dest(DIST))
         .pipe($.rev())
-        .pipe($.useref.restore())
+        .pipe(assets.restore())
         .pipe($.useref())
         .pipe($.revReplace())
-        .pipe(htmlFilter)
-        .pipe($.minifyHtml())
-        .pipe(htmlFilter.restore())
+        .pipe($.if('*.html', $.minifyHtml()))
         .pipe(gulp.dest(DIST))
         .pipe($.size());
 });
@@ -86,7 +78,9 @@ gulp.task('more-extras', function() {
 gulp.task('clean', function() {
     return gulp.src(['.tmp', DIST], {
         read: false
-    }).pipe($.clean());
+    }).pipe($.clean({
+        force: true
+    }));
 });
 
 gulp.task('build', ['html', 'images', 'extras', 'more-extras']);
@@ -97,13 +91,13 @@ gulp.task('deploy', ['clean'], function() {
 
 gulp.task('connect', function() {
     var connect = require('connect');
+    var serveStatic = require('serve-static');
     var app = connect()
         .use(require('connect-livereload')({
             port: 35729
         }))
-        .use(connect.static('app'))
-        .use(connect.static('.tmp'))
-        .use(connect.directory('app'));
+        .use(serveStatic('app'))
+        .use(serveStatic('.tmp'));
 
     require('http').createServer(app)
         .listen(9000)
@@ -137,8 +131,10 @@ gulp.task('watch', ['connect', 'serve'], function() {
 
 gulp.task('connect-test', function() {
     var connect = require('connect');
+    var serveStatic = require('serve-static');
+
     var app = connect()
-        .use(connect.static('test'));
+        .use(serveStatic('test'));
 
     require('http').createServer(app)
         .listen(9001)

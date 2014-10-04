@@ -1,1 +1,0 @@
-!function(t,e){"use strict";e()}(this,function(){"use strict";Element.prototype.getDocumentOffsetTop=function(){for(var t=this,e=0;t&&!isNaN(t.offsetTop);)e+=t.offsetTop,t=t.offsetParent;return e}});
