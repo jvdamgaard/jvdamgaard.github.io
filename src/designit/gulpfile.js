@@ -16,12 +16,6 @@ gulp.task('styles', function() {
         }))
         .pipe($.sourcemaps.write())
         .pipe(gulp.dest('.tmp/styles'))
-        .pipe($.sourcemaps.init({
-            loadMaps: true
-        }))
-        .pipe($.autoprefixer())
-        .pipe($.sourcemaps.write())
-        .pipe(gulp.dest('.tmp/styles'))
         .pipe($.size());
 });
 
@@ -42,12 +36,15 @@ gulp.task('html', ['styles', 'scripts'], function() {
         .pipe($.inlineSource('./.tmp'))
         .pipe(assets)
         .pipe($.if('*.js', $.uglify()))
+        .pipe($.if('*.css', $.autoprefixer()))
         .pipe($.if('*.css', $.combineMediaQueries()))
         .pipe($.if('*.css', $.csso()))
         .pipe(gulp.dest(DIST))
         .pipe($.rev())
         .pipe(assets.restore())
         .pipe($.useref())
+        .pipe($.if('*.html', $.replace('<script src="scripts/main.js">', '<script src="scripts/main.js" defer>')))
+        .pipe($.if('*.html', $.replace('<script src="scripts/enhancement.js">', '<script src="scripts/enhancement.js" defer>')))
         .pipe($.revReplace())
         .pipe($.if('*.html', $.minifyHtml()))
         .pipe(gulp.dest(DIST))
@@ -92,63 +89,42 @@ gulp.task('clean', function() {
 gulp.task('build', ['html', 'images', 'extras', 'more-extras']);
 
 gulp.task('deploy', ['clean'], function() {
-    gulp.start('build');
+    return gulp.start('build');
 });
 
-gulp.task('connect', function() {
+gulp.task('server', function(next) {
     var connect = require('connect');
     var serveStatic = require('serve-static');
-    var app = connect()
-        .use(require('connect-livereload')({
-            port: 35729
-        }))
+
+    connect()
         .use(serveStatic('app'))
-        .use(serveStatic('.tmp'));
-
-    require('http').createServer(app)
-        .listen(9000)
-        .on('listening', function() {
-            console.log('Started connect web server on http://localhost:9000');
-        });
+        .use(serveStatic('.tmp'))
+        .listen(9000, next);
 });
 
-gulp.task('serve', ['connect', 'styles'], function() {
-    require('opn')('http://localhost:9000');
+gulp.task('serve', function() {
+    var connect = require('connect');
+    var serveStatic = require('serve-static');
+
+    connect()
+        .use(serveStatic(DIST))
+        .listen(8000);
+
+    require('opn')('http://localhost:8000');
 });
 
-gulp.task('watch', ['connect', 'serve'], function() {
-    var server = $.livereload();
-
-    // watch for changes
-
+gulp.task('watch', ['styles', 'scripts', 'images', 'server'], function() {
+    $.livereload.listen();
     gulp.watch([
         'app/*.html',
         '.tmp/styles/**/*.css',
         'app/scripts/**/*.js',
         'app/images/**/*'
-    ]).on('change', function(file) {
-        server.changed(file.path);
-    });
+    ]).on('change', $.livereload.changed);
 
     gulp.watch('app/styles/**/*.scss', ['styles']);
     gulp.watch('app/scripts/**/*.js', ['scripts']);
     gulp.watch('app/images/**/*', ['images']);
-});
 
-gulp.task('connect-test', function() {
-    var connect = require('connect');
-    var serveStatic = require('serve-static');
-
-    var app = connect()
-        .use(serveStatic('test'));
-
-    require('http').createServer(app)
-        .listen(9001)
-        .on('listening', function() {
-            console.log('Started connect web server on http://localhost:9001');
-        });
-});
-
-gulp.task('test', ['connect-test'], function() {
-    require('opn')('http://localhost:9001');
+    require('opn')('http://localhost:9000');
 });
