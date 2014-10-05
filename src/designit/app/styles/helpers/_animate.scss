@@ -1,4 +1,4 @@
-@include critical() {
+@include non-critical() {
     .js { // Only animate if javascript is turned on
         .animate {
             transform: translate3d(0,0,0);

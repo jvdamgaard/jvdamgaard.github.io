@@ -10,14 +10,18 @@ var $ = require('gulp-load-plugins')();
 
 gulp.task('styles', function() {
     return gulp.src(['app/styles/critical.scss', 'app/styles/non-critical.scss'])
-        .pipe($.rubySass({
-            style: 'expanded',
+        .pipe($.sourcemaps.init())
+        .pipe($.sass({
             precision: 4
         }))
-        .pipe($.autoprefixer())
-        .pipe($.combineMediaQueries())
+        .pipe($.sourcemaps.write())
         .pipe(gulp.dest('.tmp/styles'))
-        .pipe(gulp.dest('app/styles/inline'))
+        .pipe($.sourcemaps.init({
+            loadMaps: true
+        }))
+        .pipe($.autoprefixer())
+        .pipe($.sourcemaps.write())
+        .pipe(gulp.dest('.tmp/styles'))
         .pipe($.size());
 });
 
@@ -25,6 +29,7 @@ gulp.task('scripts', function() {
     return gulp.src('app/scripts/**/*.js')
         .pipe($.jshint())
         .pipe($.jshint.reporter(require('jshint-stylish')))
+        .pipe(gulp.dest('.tmp/scripts'))
         .pipe($.size());
 });
 
@@ -34,10 +39,11 @@ gulp.task('html', ['styles', 'scripts'], function() {
     });
 
     return gulp.src('app/*.html')
-        .pipe($.inlineSource('./app'))
+        .pipe($.inlineSource('./.tmp'))
         .pipe(assets)
         .pipe($.if('*.js', $.uglify()))
         .pipe($.if('*.css', $.csso()))
+        .pipe($.if('*.css', $.combineMediaQueries()))
         .pipe(gulp.dest(DIST))
         .pipe($.rev())
         .pipe(assets.restore())
