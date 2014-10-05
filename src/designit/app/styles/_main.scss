@@ -25,10 +25,10 @@
 // Components
 @import "components/top-navigation";
 
-@include critical() {
+@include non-critical() {
     .test {
         background-color: #ccc;
-        height: 500px;
+        height: 200px;
         margin: ($grid-padding / 2) 0;
         text-align: center;
     }
