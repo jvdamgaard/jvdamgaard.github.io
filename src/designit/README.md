@@ -1,8 +1,11 @@
 # employme.at/designit
 
-Description
+Site: [employme.at/designit](http://employme.at/designit/)
+
+Description...
 
 - [JavaScript](#javascript)
+- [Style](#style)
 - [Performance](#performance)
 
 ## Javascript
