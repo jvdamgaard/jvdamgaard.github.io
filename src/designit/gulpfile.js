@@ -92,17 +92,7 @@ gulp.task('deploy', ['clean'], function() {
     return gulp.start('build');
 });
 
-gulp.task('server', function(next) {
-    var connect = require('connect');
-    var serveStatic = require('serve-static');
-
-    connect()
-        .use(serveStatic('app'))
-        .use(serveStatic('.tmp'))
-        .listen(9000, next);
-});
-
-gulp.task('serve', function() {
+gulp.task('serve', ['deploy'], function() {
     var connect = require('connect');
     var serveStatic = require('serve-static');
 
@@ -113,7 +103,17 @@ gulp.task('serve', function() {
     require('opn')('http://localhost:8000');
 });
 
-gulp.task('watch', ['styles', 'scripts', 'images', 'server'], function() {
+gulp.task('watch-serve', function(next) {
+    var connect = require('connect');
+    var serveStatic = require('serve-static');
+
+    connect()
+        .use(serveStatic('app'))
+        .use(serveStatic('.tmp'))
+        .listen(9000, next);
+});
+
+gulp.task('watch', ['styles', 'scripts', 'images', 'watch-serve'], function() {
     $.livereload.listen();
     gulp.watch([
         'app/*.html',
